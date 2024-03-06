@@ -1,14 +1,15 @@
 import { registerRootComponent } from 'expo'
 import { StatusBar } from 'expo-status-bar'
-import { Text, View } from 'react-native'
+import { SafeAreaProvider } from 'react-native-safe-area-context'
+
+import Navigation from './navigation/Navigation'
 
 export default function App() {
   return (
-    <View>
-      <Text className='text-center text-lg'>PizzaFly</Text>
-      {/* <StatusBar style="auto" /> */}
-    </View>
+    <SafeAreaProvider>
+      <Navigation />
+      <StatusBar style="light" />
+    </SafeAreaProvider>
   )
 }
-
 registerRootComponent(App)
