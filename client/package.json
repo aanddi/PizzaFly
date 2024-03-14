@@ -10,6 +10,7 @@
     "format": "prettier --write \"./**/*.{ts,tsx,json}\""
   },
   "dependencies": {
+    "@react-native-community/blur": "^4.4.0",
     "@react-navigation/bottom-tabs": "^6.5.16",
     "@react-navigation/native": "^6.1.14",
     "@react-navigation/native-stack": "^6.9.22",

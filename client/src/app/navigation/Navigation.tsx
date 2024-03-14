@@ -1,45 +1,24 @@
-import { AntDesign } from '@expo/vector-icons'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { NavigationContainer } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { FC } from 'react'
+
+import BottomMenu from '@/widgets/bottom-menu/BottomMenu'
 
 import { routes } from './routes'
 
-const Tab = createBottomTabNavigator()
+const Stack = createNativeStackNavigator()
 
-const screenNavigator = {
-  tabBarShowLabel: true,
-  tabBarStyle: {
-    paddingBottom: 3,
-    backgroundColor: 'white',
-  },
-  tabBarActiveTintColor: 'orange',
-  tabBarInactiveTintColor: 'grey',
-}
-
-const NavigationBottom: FC = () => {
+const Navigation: FC = () => {
   return (
     <NavigationContainer>
-      <Tab.Navigator screenOptions={screenNavigator}>
-        {routes.map(route => {
-          return (
-            <Tab.Screen
-              name={route.name}
-              component={route.component}
-              options={{
-                tabBarIcon: ({ focused }) => {
-                  return <AntDesign name={route.icon} size={25} color={focused ? 'orange' : 'grey'} />
-                },
-
-                headerTitleAlign: 'center',
-               
-              }}
-            />
-          )
+      <Stack.Navigator initialRouteName="BottomMenu">
+        <Stack.Screen name="BottomMenu" component={BottomMenu} options={{ headerShown: false }} />
+        {routes.map((route, index) => {
+          return <Stack.Screen key={index} name={route.name} component={route.component} />
         })}
-      </Tab.Navigator>
+      </Stack.Navigator>
     </NavigationContainer>
   )
 }
 
-export default NavigationBottom
+export default Navigation
