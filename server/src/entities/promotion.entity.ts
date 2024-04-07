@@ -1,9 +1,9 @@
-import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm'
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
 
 @Entity()
-export default class Promotion {
-   @PrimaryGeneratedColumn()
-   promotion_id: number
+export class Promotion {
+   @PrimaryGeneratedColumn({ name: 'promotion_id' })
+   id: number
 
    @Column()
    name: string

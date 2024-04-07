@@ -1,10 +1,15 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
+import { StopList } from './stop-list.entity.js'
+
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
 
 @Entity()
-export default class City {
+export class City {
    @PrimaryGeneratedColumn()
    city_id: number
 
    @Column()
    name: string
+
+   @OneToMany(() => StopList, stopList => stopList.city)
+   stopLists: StopList[]
 }

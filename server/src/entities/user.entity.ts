@@ -1,22 +1,35 @@
-import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm'
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
+import {Order} from './order.entity.js'
 
 @Entity()
-export default class User {
-   @PrimaryGeneratedColumn()
-   user_id: number
+export class User {
+   @PrimaryGeneratedColumn({ name: 'user_id' })
+   id: number
 
-   @Column()
-   first_name: string
+   @CreateDateColumn({ name: 'created_at' })
+   createdAt: Date
+
+   @UpdateDateColumn({ name: 'updated_at' })
+   updatedAt: Date
+
+   @Column({ name: 'first_name' })
+   firstName: string
 
    @Column()
    surname: string
 
-   @Column()
+   @Column({ nullable: true })
    patronymic: string
 
    @Column()
    phone: string
 
-   @Column()
+   @Column({ nullable: true })
    address: string
+
+   //=========== СВЯЗЬ ===========//
+
+   // Связь один ко многим. Один юзер может иметь много заказов.
+   @OneToMany(() => Order, order => order.user)
+   orders: Order[]
 }

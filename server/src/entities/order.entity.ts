@@ -1,19 +1,39 @@
-import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm'
+import {
+   Column,
+   CreateDateColumn,
+   Entity,
+   JoinColumn,
+   ManyToOne,
+   PrimaryGeneratedColumn,
+   UpdateDateColumn
+} from 'typeorm'
+
+import {User} from './user.entity.js'
 
 @Entity()
-export default class Order {
-   @PrimaryGeneratedColumn()
-   order_id: number
+export class Order {
+   @PrimaryGeneratedColumn({ name: 'order_id' })
+   id: number
 
-   @Column()
-   date: string
+   @CreateDateColumn({ name: 'created_at' })
+   createdAt: Date
+
+   @UpdateDateColumn({ name: 'updated_at' })
+   updatedAt: Date
 
    @Column()
    payment: string
 
    @Column()
-   receipt: string
+   receipt: number
 
    @Column()
    status: string
+
+   //=========== СВЯЗЬ ===========//
+
+   // Связь многие ко одному. Много заказов может быть у юзера
+   @ManyToOne(() => User, user => user.orders)
+   @JoinColumn({ name: 'user_id' })
+   user: User
 }

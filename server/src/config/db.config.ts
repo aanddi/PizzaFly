@@ -1,13 +1,16 @@
 import { DataSource } from 'typeorm'
 
-import Categorie from '../entities/categorie.entity.js';
-import Order from '../entities/order.entity.js';
-import Product from '../entities/product.entity.js';
-import Promotion from '../entities/promotion.entity.js';
-import User from '../entities/user.entity.js';
-import City from '../entities/city.entity.js';
+import { Categorie } from '../entities/categorie.entity.js'
+import { City } from '../entities/city.entity.js'
+import { OrderDesc } from '../entities/order-desc.entity.js'
+import { Order } from '../entities/order.entity.js'
+import { Product } from '../entities/product.entity.js'
+import { Promotion } from '../entities/promotion.entity.js'
+import { PromotionList } from '../entities/promotions-list.entity.js'
+import { StopList } from '../entities/stop-list.entity.js'
+import { User } from '../entities/user.entity.js'
 
-const entities = [User, Product, Order, Promotion, Categorie, City]
+const entities = [Categorie, Product, User, Order, OrderDesc, PromotionList, Promotion, City, StopList]
 
 const AppDataSource = new DataSource({
    type: 'mysql',
