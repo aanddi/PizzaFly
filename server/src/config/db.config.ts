@@ -15,10 +15,10 @@ const entities = [Categorie, Product, User, Order, OrderDesc, PromotionList, Pro
 const AppDataSource = new DataSource({
    type: 'mysql',
    database: 'mydb',
-   host: '127.0.0.1',
-   port: 3306,
-   username: 'root',
-   password: 'root',
+   host: process.env.DATABASE_HOST,
+   port: parseInt(process.env.DATABASE_PORT || '3306', 10),
+   username: process.env.DATABASE_USER || 'root',
+   password: process.env.DATABASE_PASSWORD || 'root',
    synchronize: true,
    entities: [...entities]
 })
