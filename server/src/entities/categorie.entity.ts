@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn, Relation } from 'typeorm'
+import { Product } from './product.entity.js'
 
 @Entity()
 export class Categorie {
@@ -7,4 +8,10 @@ export class Categorie {
 
    @Column()
    name: string
+
+   //=========== СВЯЗЬ ===========//
+
+   // Связь с продуктами, одной категории может принадлежать несколько продуктов
+   @OneToMany(() => Product, product => product.categorie)
+   products: Relation<Product[]>
 }

@@ -1,6 +1,6 @@
 import { StopList } from './stop-list.entity.js'
 
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn, Relation } from 'typeorm'
 
 @Entity()
 export class City {
@@ -8,8 +8,8 @@ export class City {
    city_id: number
 
    @Column()
-   name: string
+   name1: string
 
    @OneToMany(() => StopList, stopList => stopList.city)
-   stopLists: StopList[]
+   stopLists: Relation<StopList[]>
 }
