@@ -4,11 +4,13 @@ import { Column, Entity, OneToMany, PrimaryGeneratedColumn, Relation } from 'typ
 
 @Entity()
 export class City {
-   @PrimaryGeneratedColumn()
-   city_id: number
+   @PrimaryGeneratedColumn({ name: 'city_id' })
+   id: number
 
    @Column()
-   name1: string
+   name: string
+
+   //=========== СВЯЗЬ ===========//
 
    @OneToMany(() => StopList, stopList => stopList.city)
    stopLists: Relation<StopList[]>

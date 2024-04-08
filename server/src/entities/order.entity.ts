@@ -9,8 +9,8 @@ import {
    UpdateDateColumn
 } from 'typeorm'
 
-import { User } from './user.entity.js'
 import { OrderDesc } from './order-desc.entity.js'
+import { User } from './user.entity.js'
 
 @Entity()
 export class Order {

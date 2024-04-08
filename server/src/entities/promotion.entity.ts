@@ -6,6 +6,12 @@ export class Promotion {
    @PrimaryGeneratedColumn({ name: 'promotion_id' })
    id: number
 
+   @Column({ name: 'started_at' })
+   startedAt: Date
+
+   @Column({ name: 'end_date' })
+   endDate: Date
+
    @Column()
    name: string
 
@@ -18,11 +24,7 @@ export class Promotion {
    @Column()
    promocode: string
 
-   @Column()
-   started_at: string
-
-   @Column()
-   end_date: string
+   //=========== СВЯЗЬ ===========//
 
    // Связь с акциями, разные акции распространяются на разные продукты, одина акция может быть на разные продукты
    @OneToMany(() => PromotionList, promotionlist => promotionlist.promotion)

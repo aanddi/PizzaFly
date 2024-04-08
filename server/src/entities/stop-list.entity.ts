@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, Relation } from 'typeorm'
+import { Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, Relation } from 'typeorm'
 import { City } from './city.entity.js'
 import { Product } from './product.entity.js'
 
@@ -7,11 +7,13 @@ export class StopList {
    @PrimaryGeneratedColumn({ name: 'stop_list_id' })
    id: number
 
-   @ManyToOne(() => City, city => city.stopLists, {nullable: false})
+   //=========== СВЯЗЬ ===========//
+
+   @ManyToOne(() => City, city => city.stopLists, { nullable: false })
    @JoinColumn({ name: 'city_id' })
    city: Relation<City>
 
-   @ManyToOne(() => Product, product => product.stopLists, {nullable: false})
+   @ManyToOne(() => Product, product => product.stopLists, { nullable: false })
    @JoinColumn({ name: 'product_id' })
    product: Relation<Product>
 }

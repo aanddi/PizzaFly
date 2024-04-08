@@ -1,6 +1,6 @@
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, Relation } from 'typeorm'
-import { Promotion } from './promotion.entity.js'
 import { Product } from './product.entity.js'
+import { Promotion } from './promotion.entity.js'
 
 @Entity()
 export class PromotionList {
@@ -10,11 +10,13 @@ export class PromotionList {
    @Column()
    discount: string
 
+   //=========== СВЯЗЬ ===========//
+
    @ManyToOne(() => Promotion, promotion => promotion.productToPromotions, { nullable: false })
-   @JoinColumn({ name: "promotion_id"})
+   @JoinColumn({ name: 'promotion_id' })
    promotion: Relation<Promotion>
 
    @ManyToOne(() => Product, product => product.productToPromotions, { nullable: false })
-   @JoinColumn({ name: "product_id"})
+   @JoinColumn({ name: 'product_id' })
    product: Relation<Product>
 }

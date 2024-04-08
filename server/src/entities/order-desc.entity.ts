@@ -1,13 +1,10 @@
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
+import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn, Relation } from 'typeorm'
 import { Product } from './product.entity.js'
 
 @Entity()
 export class OrderDesc {
    @PrimaryGeneratedColumn({ name: 'order_desc_id' })
    id: number
-
-   @Column()
-   payment: string
 
    @Column({ name: 'count_product' })
    count: number
@@ -18,7 +15,7 @@ export class OrderDesc {
    //=========== СВЯЗЬ ===========//
 
    // Связь с продуктами, в одном заказе могут быть разные продукты
-   @OneToMany(() => Product, product => product.orderDesc, { nullable: false })
-   @JoinColumn({ name: "product_id" })
-   products: Product[]
+   @OneToOne(() => Product, product => product.orderDesc, { nullable: false })
+   @JoinColumn({ name: 'product_id' })
+   products: Relation<Product>
 }
