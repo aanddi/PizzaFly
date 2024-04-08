@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import React, { FC } from 'react'
 import { Image, ScrollView, View } from 'react-native'
 
 import { ISliderProps } from './Slider.interface'
@@ -8,7 +8,11 @@ const Slider: FC<ISliderProps> = ({ data }) => {
     <View>
       <ScrollView className="rounded-md" horizontal pagingEnabled showsHorizontalScrollIndicator={false}>
         {data.map((elem, index) => {
-          return <Image key={index} className="rounded-md" style={{ width: 335, height: 120 }} source={{ uri: elem.source }} />
+          return (
+            <View key={index}>
+              <Image className="rounded-md" style={{ width: 335, height: 120 }} source={{ uri: elem.source }} />
+            </View>
+          )
         })}
       </ScrollView>
       <View className="flex flex-row gap-2 items-center justify-center mt-1">

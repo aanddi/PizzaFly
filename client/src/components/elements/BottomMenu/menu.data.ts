@@ -1,10 +1,9 @@
-import Basket from '@/pages/Basket/Basket'
-import Home from '@/pages/Home/Home'
-import More from '@/pages/More/More'
-import Profile from '@/pages/Profile/Profile'
-import Stock from '@/pages/Stock/Stock'
-
 import { IMenuItem } from './menu.interface'
+import Basket from '@/components/pages/Basket/Basket'
+import Home from '@/components/pages/Home/Home'
+import More from '@/components/pages/More/More'
+import Profile from '@/components/pages/Profile/Profile'
+import Stock from '@/components/pages/Stock/Stock'
 
 export const menuData: IMenuItem[] = [
   {

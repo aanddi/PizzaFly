@@ -1,9 +1,7 @@
 import { FC, useState } from 'react'
 import { ScrollView, Text, TouchableOpacity, View } from 'react-native'
 
-import Quantity from '@/features/count-buttons/ui/Quantity'
-
-import ProductCard from '@/entities/Product/ui/ProductCard/ProductCard'
+import ProductCard from '../../ProductCard/ProductCard'
 
 const products = [
   {
@@ -47,6 +45,7 @@ const RibbonProduct: FC = () => {
         {menu.map((item, index) => {
           return (
             <TouchableOpacity
+              key={index}
               onPress={() => setActive(menu[index])}
               className={`pr-4 pl-4 pt-2 pb-2 rounded-lg ${active.name == item.name ? 'bg-orange-500' : null}`}>
               <Text className={`font-bold text-center ${active.name == item.name ? 'text-white' : 'text-gray-400'}`}>{item.name}</Text>
@@ -55,7 +54,7 @@ const RibbonProduct: FC = () => {
         })}
       </View>
       {products.map(product => {
-        return <ProductCard key={product.id} product={product} renderQuantityButton={() => <Quantity />} />
+        return <ProductCard key={product.id} product={product} />
       })}
     </ScrollView>
   )

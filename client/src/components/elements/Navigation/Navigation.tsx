@@ -2,7 +2,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { FC } from 'react'
 
-import BottomMenu from '@/widgets/bottom-menu/BottomMenu'
+import BottomMenu from '../BottomMenu/BottomMenu'
 
 import { routes } from './routes'
 

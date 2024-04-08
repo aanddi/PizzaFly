@@ -1,13 +1,11 @@
 import { FC } from 'react'
 import { Text, View } from 'react-native'
 
-import BaseLayout from '@/app/layouts/BaseLayout'
-
-import SearchBar from '@/shared/ui/SearchBar/SearchBar'
-import Slider from '@/shared/ui/Slider/Slider'
-
 import { data } from './slider.data'
-import RibbonProduct from '@/widgets/ribbon-products/ui/RibbonProduct'
+import RibbonProduct from '@/components/elements/RibbonProducts/ui/RibbonProduct'
+import BaseLayout from '@/components/layouts/BaseLayout'
+import SearchBar from '@/components/ui/SearchBar/SearchBar'
+import Slider from '@/components/ui/Slider/Slider'
 
 const Home: FC = () => {
   return (

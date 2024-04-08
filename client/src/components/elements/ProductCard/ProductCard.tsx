@@ -2,12 +2,21 @@ import { MaterialIcons } from '@expo/vector-icons'
 import { FC } from 'react'
 import { Image, Text, View } from 'react-native'
 
-interface PropsCard {
-  product: IProductCard
-  renderQuantityButton: () => JSX.Element
+interface Product {
+  id: number
+  name: string
+  image: string
+  desc: string
+  salary: number
 }
 
-const ProductCard: FC<PropsCard> = ({ product, renderQuantityButton }) => {
+interface IProductCard extends Product {}
+
+interface PropsCard {
+  product: IProductCard
+}
+
+const ProductCard: FC<PropsCard> = ({ product }) => {
   return (
     <View className="rounded-xl border border-slate-200 mt-4">
       <View className="flex flex-row items-center gap-3 p-3 ">
@@ -30,7 +39,6 @@ const ProductCard: FC<PropsCard> = ({ product, renderQuantityButton }) => {
               <Text className="font-bold text-xl">{product.salary}</Text>
               <MaterialIcons name="currency-ruble" size={20} color="black" />
             </View>
-            <View>{renderQuantityButton()}</View>
           </View>
         </View>
       </View>

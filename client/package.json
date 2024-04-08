@@ -1,7 +1,7 @@
 {
   "name": "pizzafly",
   "version": "1.0.0",
-  "main": "./src/app/appEntry.tsx",
+  "main": "./src/appEntry.tsx",
   "scripts": {
     "start": "expo start -c",
     "android": "expo start -c --android",
