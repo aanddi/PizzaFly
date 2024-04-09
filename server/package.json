@@ -15,7 +15,7 @@
       "ts.check",
       "build",
       "add-build"
-  ],
+   ],
    "keywords": [],
    "author": "",
    "license": "ISC",
@@ -23,6 +23,7 @@
       "cors": "^2.8.5",
       "express": "^4.19.2",
       "mysql": "^2.18.1",
+      "pg": "^8.11.5",
       "reflect-metadata": "^0.2.2",
       "typeorm": "^0.3.20"
    },
