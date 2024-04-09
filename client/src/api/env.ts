@@ -1,1 +1,1 @@
-export const SERVER_URL = ''
+export const SERVER_URL = 'https://pizza-fly-9mpl.vercel.app/api'

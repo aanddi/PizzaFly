@@ -4,7 +4,7 @@ import ICategorie from '@/types/caterorie.interface'
 export const CategoriesService = {
   async getAll() {
     return instance<ICategorie[]>({
-      url: `/categories/all`,
+      url: `/categories/`,
       method: 'GET'
     })
   }
