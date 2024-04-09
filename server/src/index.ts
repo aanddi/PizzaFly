@@ -23,6 +23,10 @@ const route = express.Router()
 // установка глобального префикса всем маршрутам
 app.use('/api', route)
 
+
+route.get('/', async (req, res) => {
+   res.json(['hello pizza'])
+})
 route.use('/products', ProductRoutes)
 route.use('/categories', CategoriestRoutes)
 
