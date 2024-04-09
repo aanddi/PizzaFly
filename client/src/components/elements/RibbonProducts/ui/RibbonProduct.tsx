@@ -1,7 +1,11 @@
-import { FC, useState } from 'react'
-import { ScrollView, Text, TouchableOpacity, View } from 'react-native'
+import { FC, useEffect, useState } from 'react'
+import { ScrollView, Text, View } from 'react-native'
 
 import ProductCard from '../../ProductCard/ProductCard'
+
+import { CategoriesService } from '@/services/caterories.services'
+import ICategorie from '@/types/caterorie.interface'
+import { useQuery } from '@tanstack/react-query'
 
 const products = [
   {
@@ -37,21 +41,35 @@ const products = [
 const menu = [{ name: 'Пиццы' }, { name: 'Комбо' }, { name: 'Нипитки' }, { name: 'Соусы' }]
 
 const RibbonProduct: FC = () => {
-  const [active, setActive] = useState(menu[0])
 
+  const { data: categoriesData, isLoading: isLoadingCategories } = useQuery({
+    queryKey: ['categories'],
+    queryFn: async () => {
+      const response = await CategoriesService.getAll()
+      
+      return response.data
+    }
+  })
+  console.log(categoriesData)
   return (
     <ScrollView>
       <View className="flex-row justify-between items-center bg-slate-200 rounded-lg p-1.5 mt-5">
-        {menu.map((item, index) => {
+        {categoriesData?.map(el => {
+          return <Text key={el.id}>{el.name}DFGDFGDG</Text>
+        })}
+        {isLoadingCategories && <Text>Loading</Text>}
+        {/* {isLoadingCategories && <Text>Загрузка</Text>} */}
+        {/* {categoriesData?.map(item => {
           return (
             <TouchableOpacity
-              key={index}
-              onPress={() => setActive(menu[index])}
-              className={`pr-4 pl-4 pt-2 pb-2 rounded-lg ${active.name == item.name ? 'bg-orange-500' : null}`}>
-              <Text className={`font-bold text-center ${active.name == item.name ? 'text-white' : 'text-gray-400'}`}>{item.name}</Text>
+              key={item.id}
+              // onPress={() => setActive(categoriesData)}
+              // className={`pr-4 pl-4 pt-2 pb-2 rounded-lg ${active.name == item.name ? 'bg-orange-500' : null}`}
+            >
+              <Text className={`font-bold text-center `}>{item.name}</Text>
             </TouchableOpacity>
           )
-        })}
+        })} */}
       </View>
       {products.map(product => {
         return <ProductCard key={product.id} product={product} />
