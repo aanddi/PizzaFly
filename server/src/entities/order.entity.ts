@@ -4,8 +4,10 @@ import {
    Entity,
    JoinColumn,
    ManyToOne,
+   OneToMany,
    OneToOne,
    PrimaryGeneratedColumn,
+   Relation,
    UpdateDateColumn
 } from 'typeorm'
 
@@ -39,8 +41,7 @@ export class Order {
    @JoinColumn({ name: 'user_id' })
    user: User
 
-   // Связь с описанием заказа
-   @OneToOne(() => OrderDesc, { nullable: false })
-   @JoinColumn({ name: 'order_desc_id' })
-   desc: OrderDesc
+   // Связь с описанием заказа. Несколько описаний у одного заказа
+   @OneToMany(() => OrderDesc, orderDesc => orderDesc.order, { nullable: false })
+   desc: Relation<OrderDesc[]>
 }
