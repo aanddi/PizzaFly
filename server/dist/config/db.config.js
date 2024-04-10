@@ -11,12 +11,13 @@ import { User } from '../entities/user.entity.js';
 const entities = [Categorie, Product, User, Order, OrderDesc, PromotionList, Promotion, City, StopList];
 const AppDataSource = new DataSource({
     type: 'postgres',
-    database: process.env.DATABASE_NAME,
-    host: process.env.DATABASE_HOST,
-    port: parseInt(process.env.DATABASE_PORT || '3306', 10),
-    username: process.env.DATABASE_USER || 'root',
-    password: process.env.DATABASE_PASSWORD || 'root',
+    database: 'pizzafly',
+    host: 'dpg-coale4cf7o1s73dsn9q0-a.frankfurt-postgres.render.com',
+    port: 5432,
+    username: 'aanddi',
+    password: 'FulH9vArERhk3wypzG3RqM5bIWsVroq2',
     synchronize: true,
+    ssl: true,
     entities: [...entities]
 });
 export default AppDataSource;
