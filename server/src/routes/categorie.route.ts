@@ -5,4 +5,6 @@ const router = express.Router()
 
 router.get('/', CategoriesService.getAll)
 
+router.post('/add', CategoriesService.add)
+
 export default router
