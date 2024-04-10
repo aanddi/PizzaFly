@@ -12,6 +12,8 @@ import { User } from '../entities/user.entity.js'
 
 const entities = [Categorie, Product, User, Order, OrderDesc, PromotionList, Promotion, City, StopList]
 
+
+// Render.com deploy database
 const AppDataSource = new DataSource({
    type: 'postgres',
    database: 'pizzafly',
@@ -23,5 +25,17 @@ const AppDataSource = new DataSource({
    ssl: true,
    entities: [...entities]
 })
+
+// local database
+// const AppDataSource = new DataSource({
+//    type: 'mysql',
+//    database: 'mydb',
+//    host: 'localhost',
+//    port: 3306,
+//    username: 'root',
+//    password: 'root',
+//    synchronize: true,
+//    entities: [...entities]
+// })
 
 export default AppDataSource

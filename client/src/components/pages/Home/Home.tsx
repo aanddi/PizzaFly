@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { Text, View } from 'react-native'
 
 import { data } from './slider.data'
-import RibbonProduct from '@/components/elements/RibbonProducts/ui/RibbonProduct'
+import RibbonProduct from '@/components/elements/RibbonProducts/RibbonProduct'
 import BaseLayout from '@/components/layouts/BaseLayout'
 import SearchBar from '@/components/ui/SearchBar/SearchBar'
 import Slider from '@/components/ui/Slider/Slider'
@@ -15,9 +15,9 @@ const Home: FC = () => {
         <Text className="text-gray-400">10:00 - 23:00</Text>
       </View>
       <Slider data={data} />
-      <View className="mt-5">
+      {/* <View className="mt-5">
         <SearchBar />
-      </View>
+      </View> */}
       <RibbonProduct />
     </BaseLayout>
   )
