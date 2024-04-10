@@ -7,4 +7,7 @@ router.get('/', CategoriesService.getAll)
 
 router.post('/add', CategoriesService.add)
 
+router.post('/edit/:id', CategoriesService.editItem)
+
+
 export default router

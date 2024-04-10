@@ -21,7 +21,7 @@ const RibbonProduct: FC = () => {
   })
 
   const { data: products, isLoading: isLoadingProducts } = useQuery({
-    queryKey: ['products'],
+    queryKey: ['products', categorieId],
     queryFn: async () => {
       const response = await ProductsService.getProducts(categorieId)
       return response.data
@@ -30,7 +30,6 @@ const RibbonProduct: FC = () => {
 
   return (
     <ScrollView>
-
       {isLoadingCategories && (
         <View className="mt-5">
           <Skeleton h="10" flex="15" rounded="md" />
@@ -45,9 +44,10 @@ const RibbonProduct: FC = () => {
                 key={item.id}
                 onPress={() => {
                   setCategoriesId(item.id)
-                  queryClient.invalidateQueries({ queryKey: ['products'] })
+                  queryClient.invalidateQueries({ queryKey: ['products', categorieId] })
                 }}
-                className={`pr-4 pl-4 pt-2 pb-2 rounded-lg ${categorieId === item.id ? 'bg-orange-500' : null}`}>
+                className={`pr-4 pl-4 pt-2 pb-2 rounded-lg ${categorieId === item.id ? 'bg-orange-500' : null}`}
+              >
                 <Text className={`font-bold text-center ${categorieId === item.id && 'text-white'}`}>{item.name}</Text>
               </TouchableOpacity>
             )
@@ -72,7 +72,6 @@ const RibbonProduct: FC = () => {
           return <ProductCard key={product.id} product={product} />
         })}
       </View>
-
     </ScrollView>
   )
 }

@@ -1,8 +1,8 @@
 import { MaterialIcons } from '@expo/vector-icons'
 import { FC } from 'react'
 import { Image, Text, View } from 'react-native'
-import IProduct from '@/types/product.interface'
 
+import IProduct from '@/types/product.interface'
 
 interface PropsCard {
   product: IProduct
@@ -22,6 +22,7 @@ const ProductCard: FC<PropsCard> = ({ product }) => {
         </View>
         <View>
           <Text className="font-bold text-lg mb-1">{product.name}</Text>
+          <Text className="font-bold text-xs mb-1 text-gray-500">{product.size}</Text>
           <Text className="w-40 text-justify text-gray-400 text-xs">{product.desc}</Text>
           <View className="mt-3 flex flex-row items-center justify-between">
             <View className="flex flex-row items-center">

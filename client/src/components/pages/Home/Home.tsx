@@ -4,7 +4,6 @@ import { Text, View } from 'react-native'
 import { data } from './slider.data'
 import RibbonProduct from '@/components/elements/RibbonProducts/RibbonProduct'
 import BaseLayout from '@/components/layouts/BaseLayout'
-import SearchBar from '@/components/ui/SearchBar/SearchBar'
 import Slider from '@/components/ui/Slider/Slider'
 
 const Home: FC = () => {
