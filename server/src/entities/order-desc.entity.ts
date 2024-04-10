@@ -20,7 +20,7 @@ export class OrderDesc {
    @JoinColumn({ name: 'product_id' })
    products: Relation<Product>
 
-   // Связь с описанием заказа
+   // Связь с заказами 
    @ManyToOne(() => Order, order => order.desc, { nullable: false })
    @JoinColumn({ name: 'order_id' })
    order: Relation<OrderDesc[]>

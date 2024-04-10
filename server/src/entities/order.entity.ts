@@ -41,7 +41,7 @@ export class Order {
    @JoinColumn({ name: 'user_id' })
    user: User
 
-   // Связь с описанием заказа
+   // Связь с описанием заказа. Несколько описаний у одного заказа
    @OneToMany(() => OrderDesc, orderDesc => orderDesc.order, { nullable: false })
    desc: Relation<OrderDesc[]>
 }
