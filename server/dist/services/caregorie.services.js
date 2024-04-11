@@ -14,7 +14,7 @@ export const CategoriesService = {
     async add(req, res) {
         try {
             const newCategorie = new Categorie();
-            newCategorie.name = req.body.name; // Предполагается, что вы ожидаете имя категории в теле запроса
+            newCategorie.name = req.body.name;
             const savedCategorie = await categorieRepository.save(newCategorie);
             res.json(savedCategorie);
         }
@@ -23,11 +23,10 @@ export const CategoriesService = {
         }
     },
     async editItem(req, res) {
-        const productId = req.params.id; // Принимаем идентификатор продукта из URL параметра
+        const productId = req.params.id;
         const existingProduct = await categorieRepository.findOne({ where: { id: +productId } });
-        if (!existingProduct) {
-            return res.status(404).json({ message: 'Продукт не найден' });
-        }
+        if (!existingProduct)
+            return res.status(404).json({ message: 'Категория не найдена' });
         try {
             existingProduct.name = req.body.name;
             const updatedProduct = await categorieRepository.save(existingProduct);

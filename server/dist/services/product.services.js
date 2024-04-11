@@ -36,11 +36,10 @@ export const ProductService = {
         }
     },
     async editItem(req, res) {
-        const productId = req.params.id; // Принимаем идентификатор продукта из URL параметра
+        const productId = req.params.id;
         const existingProduct = await productRepository.findOne({ where: { id: +productId } });
-        if (!existingProduct) {
+        if (!existingProduct)
             return res.status(404).json({ message: 'Продукт не найден' });
-        }
         try {
             existingProduct.name = req.body.name;
             existingProduct.price = req.body.price;

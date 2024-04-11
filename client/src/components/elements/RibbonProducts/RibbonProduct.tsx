@@ -35,8 +35,7 @@ const RibbonProduct: FC = () => {
           <Skeleton h="10" flex="15" rounded="md" />
         </View>
       )}
-
-      {!isLoadingCategories && (
+      {categoriesData && categoriesData.length > 0 && !isLoadingCategories ? (
         <View className="flex-row justify-between items-center bg-slate-200 rounded-lg p-1.5 mt-5">
           {categoriesData?.map(item => {
             return (
@@ -46,13 +45,14 @@ const RibbonProduct: FC = () => {
                   setCategoriesId(item.id)
                   queryClient.invalidateQueries({ queryKey: ['products', categorieId] })
                 }}
-                className={`pr-4 pl-4 pt-2 pb-2 rounded-lg ${categorieId === item.id ? 'bg-orange-500' : null}`}
-              >
+                className={`pr-4 pl-4 pt-2 pb-2 rounded-lg ${categorieId === item.id ? 'bg-orange-500' : null}`}>
                 <Text className={`font-bold text-center ${categorieId === item.id && 'text-white'}`}>{item.name}</Text>
               </TouchableOpacity>
             )
           })}
         </View>
+      ) : (
+        <Text>Упс... Категории не найдены. Попробуйте перезагрузить страницу...</Text>
       )}
 
       {isLoadingProducts && (
@@ -68,12 +68,18 @@ const RibbonProduct: FC = () => {
       )}
 
       <View className="mb-4">
-        {products?.map(product => {
-          return <ProductCard key={product.id} product={product} />
-        })}
+        {products && products?.length > 0 && !isLoadingProducts ? (
+          products?.map(product => {
+            return <ProductCard key={product.id} product={product} />
+          })
+        ) : (
+          <Text>Упс... Продукты не найдены. Попробуйте перезагрузить страницу...</Text>
+        )}
       </View>
     </ScrollView>
   )
 }
+
+
 
 export default RibbonProduct

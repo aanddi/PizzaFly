@@ -9,6 +9,8 @@ const BaseLayout: FC<PropsWithChildren> = ({ children }) => {
   const onRefresh = () => {
     setRefreshing(true)
     queryClient.invalidateQueries({ queryKey: ['products'] })
+    queryClient.invalidateQueries({ queryKey: ['categories'] })
+    queryClient.invalidateQueries({ queryKey: ['promotions'] })
     setRefreshing(false)
   }
   return (
