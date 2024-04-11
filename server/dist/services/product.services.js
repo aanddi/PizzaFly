@@ -54,7 +54,7 @@ export const ProductService = {
             res.json(updatedProduct);
         }
         catch (error) {
-            res.status(500).json({ message: 'Ошибка при добавлении категории' });
+            res.status(500).json({ message: 'Ошибка при редактировании продукта' });
         }
     }
 };

@@ -11,8 +11,10 @@ import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { PromotionList } from './promotions-list.entity.js';
 let Promotion = class Promotion {
     id;
-    startedAt;
-    endDate;
+    // @Column({ name: 'started_at' })
+    // startedAt: Date
+    // @Column({ name: 'end_date' })
+    // endDate: Date
     name;
     desc;
     banner;
@@ -25,14 +27,6 @@ __decorate([
     PrimaryGeneratedColumn({ name: 'promotion_id' }),
     __metadata("design:type", Number)
 ], Promotion.prototype, "id", void 0);
-__decorate([
-    Column({ name: 'started_at' }),
-    __metadata("design:type", Date)
-], Promotion.prototype, "startedAt", void 0);
-__decorate([
-    Column({ name: 'end_date' }),
-    __metadata("design:type", Date)
-], Promotion.prototype, "endDate", void 0);
 __decorate([
     Column(),
     __metadata("design:type", String)

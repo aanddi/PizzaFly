@@ -7,8 +7,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Product } from './product.entity.js';
+import { Order } from './order.entity.js';
 let OrderDesc = class OrderDesc {
     id;
     count;
@@ -16,6 +17,8 @@ let OrderDesc = class OrderDesc {
     //=========== СВЯЗЬ ===========//
     // Связь с продуктами, в одном заказе могут быть разные продукты
     products;
+    // Связь с заказами 
+    order;
 };
 __decorate([
     PrimaryGeneratedColumn({ name: 'order_desc_id' }),
@@ -34,6 +37,11 @@ __decorate([
     JoinColumn({ name: 'product_id' }),
     __metadata("design:type", Object)
 ], OrderDesc.prototype, "products", void 0);
+__decorate([
+    ManyToOne(() => Order, order => order.desc, { nullable: false }),
+    JoinColumn({ name: 'order_id' }),
+    __metadata("design:type", Object)
+], OrderDesc.prototype, "order", void 0);
 OrderDesc = __decorate([
     Entity()
 ], OrderDesc);

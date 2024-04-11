@@ -8,7 +8,7 @@ export const CategoriesService = {
             res.json(categorie);
         }
         catch (error) {
-            res.status(500).json({ message: 'Ошибка при получении продуктов' });
+            res.status(500).json({ message: 'Ошибка при получении категорий' });
         }
     },
     async add(req, res) {
@@ -34,7 +34,7 @@ export const CategoriesService = {
             res.json(updatedProduct);
         }
         catch (error) {
-            res.status(500).json({ message: 'Ошибка при добавлении категории' });
+            res.status(500).json({ message: 'Ошибка при редактировании категории' });
         }
     }
 };

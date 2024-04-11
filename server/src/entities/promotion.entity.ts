@@ -6,11 +6,11 @@ export class Promotion {
    @PrimaryGeneratedColumn({ name: 'promotion_id' })
    id: number
 
-   @Column({ name: 'started_at' })
-   startedAt: Date
+   // @Column({ name: 'started_at' })
+   // startedAt: Date
 
-   @Column({ name: 'end_date' })
-   endDate: Date
+   // @Column({ name: 'end_date' })
+   // endDate: Date
 
    @Column()
    name: string

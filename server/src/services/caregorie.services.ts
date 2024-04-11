@@ -10,7 +10,7 @@ export const CategoriesService = {
          const categorie = await categorieRepository.find()
          res.json(categorie)
       } catch (error) {
-         res.status(500).json({ message: 'Ошибка при получении продуктов' })
+         res.status(500).json({ message: 'Ошибка при получении категорий' })
       }
    },
 
@@ -41,7 +41,7 @@ export const CategoriesService = {
          const updatedProduct = await categorieRepository.save(existingProduct)
          res.json(updatedProduct)
       } catch (error) {
-         res.status(500).json({ message: 'Ошибка при добавлении категории' })
+         res.status(500).json({ message: 'Ошибка при редактировании категории' })
       }
    }
 }
