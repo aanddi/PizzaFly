@@ -33,6 +33,7 @@ export const ProductService = {
          newProduct.size = req.body.size
 
          const savedProduct = await productRepository.save(newProduct)
+
          res.json(savedProduct)
       } catch (error) {
          res.status(500).json({ message: 'Ошибка при добавлении категории' })
@@ -40,13 +41,11 @@ export const ProductService = {
    },
 
    async editItem(req: Request, res: Response) {
-      const productId = req.params.id // Принимаем идентификатор продукта из URL параметра
+      const productId = req.params.id
 
-      const existingProduct = await productRepository.findOne({ where: { id: +productId } });
+      const existingProduct = await productRepository.findOne({ where: { id: +productId } })
 
-      if (!existingProduct) {
-         return res.status(404).json({ message: 'Продукт не найден' })
-      }
+      if (!existingProduct) return res.status(404).json({ message: 'Продукт не найден' })
 
       try {
          existingProduct.name = req.body.name
@@ -58,8 +57,8 @@ export const ProductService = {
          existingProduct.categorie = req.body.categorie_id
          existingProduct.size = req.body.size
 
-
          const updatedProduct = await productRepository.save(existingProduct)
+
          res.json(updatedProduct)
       } catch (error) {
          res.status(500).json({ message: 'Ошибка при редактировании продукта' })
