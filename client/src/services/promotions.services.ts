@@ -1,4 +1,5 @@
 import { instance } from '@/api/instance.api'
+
 import IPromotion from '@/types/promotion.interface'
 
 export const PromotionsService = {

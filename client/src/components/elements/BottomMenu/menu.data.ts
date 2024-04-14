@@ -1,9 +1,9 @@
-import { IMenuItem } from './menu.interface'
 import Basket from '@/components/pages/Basket/Basket'
 import Home from '@/components/pages/Home/Home'
-import More from '@/components/pages/More/More'
 import Profile from '@/components/pages/Profile/Profile'
-import Stock from '@/components/pages/Stock/Stock'
+import PromotionPage from '@/components/pages/Promotions/Promotions'
+
+import { IMenuItem } from './menu.interface'
 
 export const menuData: IMenuItem[] = [
   {
@@ -13,7 +13,7 @@ export const menuData: IMenuItem[] = [
   },
   {
     name: 'Акции',
-    component: Stock,
+    component: PromotionPage,
     icon: 'staro'
   },
   {
@@ -25,10 +25,10 @@ export const menuData: IMenuItem[] = [
     name: 'Профиль',
     component: Profile,
     icon: 'user'
-  },
-  {
-    name: 'Еще',
-    component: More,
-    icon: 'ellipsis1'
   }
+  // {
+  //   name: 'Еще',
+  //   component: More,
+  //   icon: 'ellipsis1'
+  // }
 ]

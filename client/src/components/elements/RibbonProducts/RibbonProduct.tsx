@@ -1,11 +1,14 @@
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { Skeleton } from 'native-base'
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { ScrollView, Text, TouchableOpacity, View } from 'react-native'
 
 import ProductCard from '@/components/elements/ProductCard/ProductCard'
+
 import { CategoriesService } from '@/services/caterories.services'
 import { ProductsService } from '@/services/products.services'
+
+import ErrorMessage from '../ErrorMessage/ErrorMessage'
 
 const RibbonProduct: FC = () => {
   const queryClient = useQueryClient()
@@ -28,6 +31,12 @@ const RibbonProduct: FC = () => {
     }
   })
 
+  useEffect(() => {
+    queryClient.invalidateQueries({ queryKey: ['products', categorieId] })
+    queryClient.invalidateQueries({ queryKey: ['categories'] })
+    queryClient.invalidateQueries({ queryKey: ['promotions'] })
+  }, [])
+
   return (
     <ScrollView>
       {isLoadingCategories && (
@@ -35,7 +44,8 @@ const RibbonProduct: FC = () => {
           <Skeleton h="10" flex="15" rounded="md" />
         </View>
       )}
-      {categoriesData && categoriesData.length > 0 && !isLoadingCategories ? (
+
+      {categoriesData && (
         <View className="flex-row justify-between items-center bg-slate-200 rounded-lg p-1.5 mt-5">
           {categoriesData?.map(item => {
             return (
@@ -45,15 +55,16 @@ const RibbonProduct: FC = () => {
                   setCategoriesId(item.id)
                   queryClient.invalidateQueries({ queryKey: ['products', categorieId] })
                 }}
-                className={`pr-4 pl-4 pt-2 pb-2 rounded-lg ${categorieId === item.id ? 'bg-orange-500' : null}`}>
+                className={`pr-4 pl-4 pt-2 pb-2 rounded-lg ${categorieId === item.id ? 'bg-orange-500' : null}`}
+              >
                 <Text className={`font-bold text-center ${categorieId === item.id && 'text-white'}`}>{item.name}</Text>
               </TouchableOpacity>
             )
           })}
         </View>
-      ) : (
-        <Text>Упс... Категории не найдены. Попробуйте перезагрузить страницу...</Text>
       )}
+
+      {!categoriesData && !isLoadingCategories && <ErrorMessage message="Упс... Категории не найдены. Попробуйте перезагрузить страницу." />}
 
       {isLoadingProducts && (
         <View className="mt-5">
@@ -68,18 +79,15 @@ const RibbonProduct: FC = () => {
       )}
 
       <View className="mb-4">
-        {products && products?.length > 0 && !isLoadingProducts ? (
+        {products &&
           products?.map(product => {
             return <ProductCard key={product.id} product={product} />
-          })
-        ) : (
-          <Text>Упс... Продукты не найдены. Попробуйте перезагрузить страницу...</Text>
-        )}
+          })}
       </View>
+
+      <View>{!products && !isLoadingProducts && <ErrorMessage message="Упс... Продукты не найдены. Попробуйте перезагрузить страницу." />}</View>
     </ScrollView>
   )
 }
-
-
 
 export default RibbonProduct

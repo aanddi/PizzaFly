@@ -13,12 +13,11 @@
   "jsxBracketSameLine": true,
   "importOrder": [
     "<THIRD_PARTY_MODULES>",
-    "^@/app/(.*)$",
-    "^@/pages/(.*)$",
-    "^@/widgets/(.*)$",
-    "^@/features/(.*)$",
-    "^@/entities/(.*)$",
-    "^@/shared/(.*)$",
+    "^@/api/(.*)$",
+    "^@/assets/(.*)$",
+    "^@/components/(.*)$",
+    "^@/services/(.*)$",
+    "^@/types/(.*)$",
     "^../(.*)",
     "^./(.*)"
   ],

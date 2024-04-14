@@ -1,4 +1,5 @@
 import { instance } from '@/api/instance.api'
+
 import ICategorie from '@/types/caterorie.interface'
 
 export const CategoriesService = {
