@@ -5,7 +5,7 @@ const userRepository = AppDataSource.getRepository(User)
 
 export const UserService = {
    async getUserByPhone(req: Request, res: Response) {
-      const phone = req.body.phone
+      const phone = req.params.phone
       try {
          const user = await userRepository.find({ where: { phone: phone } })
 

@@ -53,6 +53,9 @@ const Auth = () => {
     enabled: !!fetchUser
   })
 
+  console.log(userData)
+  console.log(isLoadingUser)
+
   return (
     <View className="mt-10">
       <Text className="text-center font-bold text-xl">Введите номер</Text>
@@ -64,6 +67,7 @@ const Auth = () => {
           placeholder="+7 (000) 000-00-00"
           value={phoneField}
           onChangeText={setPhoneField}
+          onChange={() => setErrorValidPhone(false)}
         />
       </View>
 
@@ -74,6 +78,7 @@ const Auth = () => {
           placeholder="_ _ _ _"
           value={codeField}
           onChangeText={setCodeField}
+          onChange={() => setErrorValidCode(false)}
         />
       </View>
 
