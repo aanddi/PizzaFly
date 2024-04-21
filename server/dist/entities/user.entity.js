@@ -35,11 +35,11 @@ __decorate([
     __metadata("design:type", Date)
 ], User.prototype, "updatedAt", void 0);
 __decorate([
-    Column({ name: 'first_name' }),
+    Column({ name: 'first_name', nullable: true }),
     __metadata("design:type", String)
 ], User.prototype, "firstName", void 0);
 __decorate([
-    Column(),
+    Column({ nullable: true }),
     __metadata("design:type", String)
 ], User.prototype, "surname", void 0);
 __decorate([

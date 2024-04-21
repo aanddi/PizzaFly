@@ -12,10 +12,10 @@ export class User {
    @UpdateDateColumn({ name: 'updated_at' })
    updatedAt: Date
 
-   @Column({ name: 'first_name' })
+   @Column({ name: 'first_name', nullable: true })
    firstName: string
 
-   @Column()
+   @Column({ nullable: true })
    surname: string
 
    @Column({ nullable: true })
