@@ -1,5 +1,6 @@
-import IUser from "@/types/user.interface"
-import { createSlice } from "@reduxjs/toolkit"
+import { createSlice } from '@reduxjs/toolkit'
+
+import IUser from '@/types/user.interface'
 
 interface IUserState {
   user: IUser | null
@@ -16,13 +17,18 @@ const userSlice = createSlice({
   initialState,
 
   reducers: {
-     auth(state, actions) {
+    auth(state, actions) {
       state.isAuth = true
-      state.user = actions.payload.userData
-     }
+      state.user = actions.payload
+    },
+
+    logout(state) {
+      state.isAuth = false
+      state.user = null
+    }
   }
 })
 
-export const { auth } = userSlice.actions
+export const { auth, logout } = userSlice.actions
 
 export default userSlice.reducer

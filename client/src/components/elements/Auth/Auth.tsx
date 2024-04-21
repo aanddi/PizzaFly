@@ -1,5 +1,5 @@
 import { Feather, MaterialIcons } from '@expo/vector-icons'
-import { useQuery } from '@tanstack/react-query'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
 import React, { useState } from 'react'
 import { Alert, Button, Text, TextInput, View } from 'react-native'
 
@@ -18,6 +18,7 @@ const Auth = () => {
   */
 
   const dispatch = useTypedDispatch()
+  const queryClient = useQueryClient()
 
   const [phoneField, setPhoneField] = useState<string>('')
   const [codeField, setCodeField] = useState<string>('')
@@ -27,38 +28,25 @@ const Auth = () => {
 
   const [code, setCode] = useState<number>(2345)
 
-  const [fetchUser, setFeatchUser] = useState<boolean>(false)
-
   const handlePassport = () => {
     if (validPhone.test(phoneField)) return Alert.alert(`Ваш код: ${code}`)
     else setErrorValidPhone(true)
   }
 
-  const handleAuth = () => {
-    if (code === +codeField) setFeatchUser(true)
-    else setErrorValidCode(true)
-  }
-
-  const { data: userData, isLoading: isLoadingUser } = useQuery({
-    queryKey: ['user'],
-    queryFn: async () => {
+  const handleAuth = async () => {
+    if (code === +codeField) {
       const response = await UsersService.getUserByPhone(phoneField)
-      if (response.status !== 200) {
-        throw new Error('Ошибка при получении данных')
-      } else {
-        dispatch(auth(userData))
-        return response.data
-      }
-    },
-    enabled: !!fetchUser
-  })
-
-  console.log(userData)
-  console.log(isLoadingUser)
+      dispatch(auth(response.data))
+      return response.data
+    } else {
+      setErrorValidCode(true)
+    }
+  }
 
   return (
     <View className="mt-10">
       <Text className="text-center font-bold text-xl">Введите номер</Text>
+      {/* <Text>{isLoadingUser && 'Загрузка'}</Text> */}
 
       <View className="flex flex-row items-center border rounded-lg border-gray-200 p-2 bg-slate-200 mt-7">
         <Feather name="phone-call" size={18} color="gray" />

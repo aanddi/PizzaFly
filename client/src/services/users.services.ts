@@ -5,11 +5,15 @@ import IUser from '@/types/user.interface'
 export const UsersService = {
   async getUserByPhone(phone: string) {
     return instance<IUser>({
-      url: `/user/get`,
-      method: 'GET',
-      params: {
-        phone: phone
-      }
+      url: `/users/get/${phone}`,
+      method: 'GET'
+    })
+  },
+
+  async getUsers() {
+    return instance<IUser[]>({
+      url: `/users`,
+      method: 'GET'
     })
   }
 }
