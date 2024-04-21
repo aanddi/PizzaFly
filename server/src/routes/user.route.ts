@@ -4,6 +4,6 @@ import { UserService } from '../services/user.services.js'
 const router = express.Router()
 
 router.get('/', UserService.getUsers)
-router.get('/get', UserService.getUserByPhone)
+router.get('/get/:phone', UserService.getUserByPhone)
 
 export default router
