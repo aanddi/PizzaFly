@@ -3,7 +3,7 @@ import { Skeleton } from 'native-base'
 import { FC } from 'react'
 import { View } from 'react-native'
 
-import PromotionCard from '@/components/elements/PromotionCard/PromotionCard'
+import PromotionCard from '@/components/elements/Promotion/PromotionCard/PromotionCard'
 import BaseLayout from '@/components/layouts/BaseLayout'
 
 import { PromotionsService } from '@/services/promotions.services'

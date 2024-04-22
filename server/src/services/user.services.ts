@@ -9,7 +9,7 @@ export const UserService = {
       try {
          const user = await userRepository.find({ where: { phone: phone } })
 
-         if (user.length > 0) res.json(user)
+         if (user.length > 0) res.json(...user)
          else {
             const newUser = new User()
             newUser.phone = phone

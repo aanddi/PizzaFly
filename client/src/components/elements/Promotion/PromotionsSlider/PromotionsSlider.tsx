@@ -5,7 +5,7 @@ import { Image, ScrollView, View } from 'react-native'
 
 import { PromotionsService } from '@/services/promotions.services'
 
-import ErrorMessage from '../ErrorMessage/ErrorMessage'
+import ErrorMessage from '../../app/ErrorMessage/ErrorMessage'
 
 const PromotionsSlider: FC = () => {
   const { data: promotions, isLoading: isLoadingPromotions } = useQuery({

@@ -3,12 +3,12 @@ import { Skeleton } from 'native-base'
 import { FC, useEffect, useState } from 'react'
 import { ScrollView, Text, TouchableOpacity, View } from 'react-native'
 
-import ProductCard from '@/components/elements/ProductCard/ProductCard'
+import ProductCard from '@/components/elements/Product/ProductCard/ProductCard'
 
 import { CategoriesService } from '@/services/caterories.services'
 import { ProductsService } from '@/services/products.services'
 
-import ErrorMessage from '../ErrorMessage/ErrorMessage'
+import ErrorMessage from '../../app/ErrorMessage/ErrorMessage'
 
 const RibbonProduct: FC = () => {
   const queryClient = useQueryClient()
@@ -55,8 +55,7 @@ const RibbonProduct: FC = () => {
                   setCategoriesId(item.id)
                   queryClient.invalidateQueries({ queryKey: ['products', categorieId] })
                 }}
-                className={`pr-4 pl-4 pt-2 pb-2 rounded-lg ${categorieId === item.id ? 'bg-orange-500' : null}`}
-              >
+                className={`pr-4 pl-4 pt-2 pb-2 rounded-lg ${categorieId === item.id ? 'bg-orange-500' : null}`}>
                 <Text className={`font-bold text-center ${categorieId === item.id && 'text-white'}`}>{item.name}</Text>
               </TouchableOpacity>
             )

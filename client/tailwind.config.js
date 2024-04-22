@@ -1,4 +1,3 @@
-
 const themeColors = {
   GRAY: '#F2F2F2'
   // Добавьте другие цвета и их значения
@@ -10,10 +9,11 @@ module.exports = {
     extend: {
       colors: {
         gray: {
-          DEFAULT: themeColors.GRAY 
-        }
+          DEFAULT: themeColors.GRAY
+        },
+        whiteCustomized: '#F9F9F9'
       },
-   
+
       fontFamily: {
         sans: ['sans-serif']
       }

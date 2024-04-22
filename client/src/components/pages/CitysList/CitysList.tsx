@@ -3,7 +3,7 @@ import { Skeleton } from 'native-base'
 import { FC, useEffect } from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
 
-import ErrorMessage from '@/components/elements/ErrorMessage/ErrorMessage'
+import ErrorMessage from '@/components/elements/app/ErrorMessage/ErrorMessage'
 import BaseLayout from '@/components/layouts/BaseLayout'
 
 import { CitysServices } from '@/services/citys.serveces'

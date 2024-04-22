@@ -1,7 +1,9 @@
 import { Feather, MaterialIcons } from '@expo/vector-icons'
-import { useQuery, useQueryClient } from '@tanstack/react-query'
+import { useQueryClient } from '@tanstack/react-query'
 import React, { useState } from 'react'
-import { Alert, Button, Text, TextInput, View } from 'react-native'
+import { Alert, Button, Text, View } from 'react-native'
+
+import Field from '@/components/ui/Field/Field'
 
 import { UsersService } from '@/services/users.services'
 
@@ -28,6 +30,8 @@ const Auth = () => {
 
   const [code, setCode] = useState<number>(2345)
 
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+
   const handlePassport = () => {
     if (validPhone.test(phoneField)) return Alert.alert(`Ваш код: ${code}`)
     else setErrorValidPhone(true)
@@ -35,8 +39,10 @@ const Auth = () => {
 
   const handleAuth = async () => {
     if (code === +codeField) {
+      setIsLoading(true)
       const response = await UsersService.getUserByPhone(phoneField)
       dispatch(auth(response.data))
+      setIsLoading(false)
       return response.data
     } else {
       setErrorValidCode(true)
@@ -46,37 +52,38 @@ const Auth = () => {
   return (
     <View className="mt-10">
       <Text className="text-center font-bold text-xl">Введите номер</Text>
-      {/* <Text>{isLoadingUser && 'Загрузка'}</Text> */}
 
-      <View className="flex flex-row items-center border rounded-lg border-gray-200 p-2 bg-slate-200 mt-7">
-        <Feather name="phone-call" size={18} color="gray" />
-        <TextInput
-          className="flex-1 pl-5 text-slate-600 font-bold tracking-widest"
-          placeholder="+7 (000) 000-00-00"
-          value={phoneField}
-          onChangeText={setPhoneField}
-          onChange={() => setErrorValidPhone(false)}
-        />
-      </View>
+      <Field
+        icon={<Feather name="phone-call" size={18} color="gray" />}
+        placeholder="+7 (000) 000-00-00"
+        value={phoneField}
+        onChangeText={setPhoneField}
+        onChange={() => setErrorValidPhone(false)}
+      />
 
-      <View className="flex flex-row items-center border rounded-lg border-gray-200 p-2 bg-slate-200 mt-7">
-        <MaterialIcons name="password" size={18} color="gray" />
-        <TextInput
-          className="flex-1 pl-5 text-slate-600 font-bold tracking-widest"
-          placeholder="_ _ _ _"
-          value={codeField}
-          onChangeText={setCodeField}
-          onChange={() => setErrorValidCode(false)}
-        />
-      </View>
+      <Field
+        icon={<MaterialIcons name="password" size={18} color="gray" />}
+        className="flex-1 pl-5 text-slate-600 font-bold tracking-widest"
+        placeholder="_ _ _ _"
+        keyboardType="number-pad"
+        value={codeField}
+        onChangeText={setCodeField}
+        onChange={() => setErrorValidCode(false)}
+      />
 
       <View className="mt-20 mb-3">
         <Button title="Получить код" color="#3C3C3C" onPress={handlePassport} />
       </View>
 
-      <View className="mt-2 mb-3">
-        <Button title="Войти" color="#F77905" onPress={handleAuth} />
-      </View>
+      {isLoading ? (
+        <View>
+          <Text className="text-center mt-2 mb-2 text-orange-500">Загрузка...</Text>
+        </View>
+      ) : (
+        <View className="mt-2 mb-3">
+          <Button title="Войти" color="#F77905" onPress={handleAuth} />
+        </View>
+      )}
 
       {errorValidPhone && <Text className="text-center text-red-500 mb-2">Номер введен не правильно.</Text>}
       {errorValidCode && <Text className="text-center text-red-500 mb-2">Код введен не правильно.</Text>}

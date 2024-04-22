@@ -6,7 +6,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 
-import Navigation from './components/elements/Navigation/Navigation'
+import Navigation from './components/elements/app/Navigation/Navigation'
 import store, { persistor } from './store/store'
 
 const queryClient = new QueryClient()
