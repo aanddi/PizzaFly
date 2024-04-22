@@ -15,5 +15,13 @@ export const UsersService = {
       url: `/users`,
       method: 'GET'
     })
+  },
+
+  async editUser(id: number | undefined, data: IUser) {
+    return instance<IUser[]>({
+      url: `/users/edit/${id}`,
+      method: 'GET',
+      data
+    })
   }
 }

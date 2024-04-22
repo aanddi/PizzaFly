@@ -27,5 +27,22 @@ export const UserService = {
         catch (error) {
             res.status(500).json({ message: 'Ошибка' });
         }
+    },
+    async edit(req, res) {
+        const idUser = req.params.id;
+        const user = await userRepository.findOne({ where: { id: +idUser } });
+        if (!user)
+            return res.status(404).json({ message: 'Пользователь не найден' });
+        try {
+            user.firstName = req.body.firstName;
+            user.surname = req.body.surname;
+            user.patronymic = req.body.patronymic;
+            user.address = req.body.address;
+            const updatedUser = await userRepository.save(user);
+            res.json(updatedUser);
+        }
+        catch (error) {
+            res.status(500).json({ message: 'Ошибка' });
+        }
     }
 };
