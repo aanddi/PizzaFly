@@ -1,6 +1,7 @@
 import { Request, Response } from 'express'
 import AppDataSource from '../config/db.config.js'
 import { User } from '../entities/user.entity.js'
+
 const userRepository = AppDataSource.getRepository(User)
 
 export const UserService = {
