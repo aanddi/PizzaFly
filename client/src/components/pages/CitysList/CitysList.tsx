@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { Skeleton } from 'native-base'
 import { FC, useEffect } from 'react'
@@ -8,8 +9,13 @@ import BaseLayout from '@/components/layouts/BaseLayout'
 
 import { CitysServices } from '@/services/citys.serveces'
 
+import { useTypedDispatch } from '@/hooks/redux'
+import { change } from '@/store/city/city.slice'
+
 const CitysList: FC = () => {
   const queryClient = useQueryClient()
+  const dispatch = useTypedDispatch()
+  const navigation = useNavigation()
 
   const { data: citys, isLoading: isLoadingCitys } = useQuery({
     queryKey: ['citys'],
@@ -22,6 +28,11 @@ const CitysList: FC = () => {
   useEffect(() => {
     queryClient.invalidateQueries({ queryKey: ['citys'] })
   }, [])
+
+  const handleChangeCity = (name: string) => {
+    dispatch(change(name))
+    navigation.goBack()
+  }
 
   return (
     <BaseLayout>
@@ -40,10 +51,8 @@ const CitysList: FC = () => {
         {citys &&
           citys.map(el => {
             return (
-              <TouchableOpacity>
-                <Text className="font-bold text-slate-600 p-2 text-center text-xl bg-white" key={el.id}>
-                  {el.name}
-                </Text>
+              <TouchableOpacity key={el.id} onPress={() => handleChangeCity(el.name)}>
+                <Text className="font-bold text-slate-600 p-2 text-center text-xl">{el.name}</Text>
               </TouchableOpacity>
             )
           })}

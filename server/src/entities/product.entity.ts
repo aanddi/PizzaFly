@@ -27,7 +27,7 @@ export class Product {
    @Column()
    discount: number
 
-   @Column({ nullable: true }) 
+   @Column({ nullable: true })
    tags: string
 
    //=========== СВЯЗЬ ===========//

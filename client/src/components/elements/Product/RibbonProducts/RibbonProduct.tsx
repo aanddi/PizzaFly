@@ -55,7 +55,8 @@ const RibbonProduct: FC = () => {
                   setCategoriesId(item.id)
                   queryClient.invalidateQueries({ queryKey: ['products', categorieId] })
                 }}
-                className={`pr-4 pl-4 pt-2 pb-2 rounded-lg ${categorieId === item.id ? 'bg-orange-500' : null}`}>
+                className={`pr-4 pl-4 pt-2 pb-2 rounded-lg ${categorieId === item.id ? 'bg-orange-500' : null}`}
+              >
                 <Text className={`font-bold text-center ${categorieId === item.id && 'text-white'}`}>{item.name}</Text>
               </TouchableOpacity>
             )
@@ -63,7 +64,9 @@ const RibbonProduct: FC = () => {
         </View>
       )}
 
-      {!categoriesData && !isLoadingCategories && <ErrorMessage message="Упс... Категории не найдены. Попробуйте перезагрузить страницу." />}
+      {!categoriesData && !isLoadingCategories && (
+        <ErrorMessage message="Упс... Категории не найдены. Попробуйте перезагрузить страницу." />
+      )}
 
       {isLoadingProducts && (
         <View className="mt-5">
@@ -84,7 +87,11 @@ const RibbonProduct: FC = () => {
           })}
       </View>
 
-      <View>{!products && !isLoadingProducts && <ErrorMessage message="Упс... Продукты не найдены. Попробуйте перезагрузить страницу." />}</View>
+      <View>
+        {!products && !isLoadingProducts && (
+          <ErrorMessage message="Упс... Продукты не найдены. Попробуйте перезагрузить страницу." />
+        )}
+      </View>
     </ScrollView>
   )
 }

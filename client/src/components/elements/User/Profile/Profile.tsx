@@ -1,3 +1,4 @@
+import { AntDesign, Feather } from '@expo/vector-icons'
 import { ParamListBase, useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { useMutation } from '@tanstack/react-query'
@@ -15,12 +16,18 @@ import { auth, logout } from '@/store/user/user.slice'
 const Profile: FC = () => {
   const dispatch = useTypedDispatch()
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>()
-  const { user } = useTypedSelector(state => state.user)
 
-  const [nameField, setNameField] = useState<string>('')
-  const [surnameField, setSurnameField] = useState<string>('')
-  const [patronymicField, setPatronymicField] = useState<string>('')
-  const [addressField, setAddressField] = useState<string>('')
+  const { user } = useTypedSelector(state => state.user)
+  const { city } = useTypedSelector(state => state.city)
+
+  console.log(city)
+
+  const [nameField, setNameField] = useState(user?.firstName)
+  const [surnameField, setSurnameField] = useState(user?.surname)
+  const [patronymicField, setPatronymicField] = useState(user?.patronymic)
+  const [addressField, setAddressField] = useState(user?.address)
+
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const mutationUser = useMutation({
     mutationKey: ['editUser'],
@@ -31,20 +38,31 @@ const Profile: FC = () => {
         patronymic: patronymicField,
         address: addressField
       }
+      setIsLoading(true)
       const respone = await UsersService.editUser(id, data)
       dispatch(auth(respone.data))
+      setIsLoading(false)
       return respone.data
     }
   })
 
   return (
     <BaseLayout>
-      <View className="mt-5">
-        <Text className="font-black text-xl ">{user?.firstName ? `Здравствуйте, ${user?.firstName}!` : 'Здравствуйте!'}</Text>
-        <Text className="pt-4 font-bold">{user?.phone}</Text>
+      <View className="mt-5 bg-slate-800 p-2 rounded-md">
+        <Text className=" text-center font-black text-xl text-white">
+          {user?.firstName ? `Здравствуйте, ${user?.firstName}!` : 'Здравствуйте!'}
+        </Text>
       </View>
 
-      <View className="mt-8">
+      <View className="flex justify-between flex-row items-center mt-5">
+        <Text className="font-bold">{user?.phone}</Text>
+        <TouchableOpacity className="flex flex-row gap-1 items-center" onPress={() => navigation.navigate('Города')}>
+          <Feather name="map-pin" size={15} color="gray" />
+          <Text className="font-bold">{city}</Text>
+        </TouchableOpacity>
+      </View>
+
+      <View className="mt-5">
         <Button title="История заказов" color={'#F77905'} onPress={() => navigation.navigate('История заказов')} />
       </View>
 
@@ -53,14 +71,40 @@ const Profile: FC = () => {
       </View>
 
       <View>
-        <Field placeholder="Имя" value={user?.firstName} onChangeText={setNameField} />
-        <Field placeholder="Фамилия" value={user?.surname} onChangeText={setSurnameField} />
-        <Field placeholder="Отчество" value={user?.patronymic} onChangeText={setPatronymicField} />
-        <Field placeholder="Адрес" value={user?.address} onChangeText={setAddressField} />
+        <Field
+          icon={<AntDesign name="user" size={18} color="gray" />}
+          placeholder="Имя"
+          value={nameField}
+          onChangeText={setNameField}
+        />
+        <Field
+          icon={<AntDesign name="user" size={18} color="gray" />}
+          placeholder="Фамилия"
+          value={surnameField}
+          onChangeText={setSurnameField}
+        />
+        <Field
+          icon={<AntDesign name="user" size={18} color="gray" />}
+          placeholder="Отчество"
+          value={patronymicField}
+          onChangeText={setPatronymicField}
+        />
+        <Field
+          icon={<Feather name="map-pin" size={18} color="gray" />}
+          placeholder="Адрес"
+          value={addressField}
+          onChangeText={setAddressField}
+        />
       </View>
 
       <View className="mt-10">
-        <Button title="Сохранить" onPress={() => mutationUser.mutate(user?.id)} />
+        {isLoading ? (
+          <View>
+            <Text className="text-center mt-2 mb-2 text-blue-500 font-bold">Загрузка...</Text>
+          </View>
+        ) : (
+          <Button title="Сохранить" onPress={() => mutationUser.mutate(user?.id)} />
+        )}
 
         <TouchableOpacity onPress={() => dispatch(logout())}>
           <Text className="font-bold text-center text-red-600 text-lg mt-5">Выход</Text>

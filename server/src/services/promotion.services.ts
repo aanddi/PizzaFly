@@ -28,11 +28,11 @@ export const PromotionService = {
          res.status(500).json({ message: 'Ошибка добавлении акции' })
       }
    },
-    
+
    async editItem(req: Request, res: Response) {
       const promotionId = req.params.id
 
-      const existingPromotion = await promotionRepository.findOne({ where: { id: +promotionId } });
+      const existingPromotion = await promotionRepository.findOne({ where: { id: +promotionId } })
 
       if (!existingPromotion) return res.status(404).json({ message: 'Акция не найдена' })
 

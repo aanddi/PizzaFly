@@ -14,7 +14,10 @@ const BaseLayout: FC<PropsWithChildren> = ({ children }) => {
     setRefreshing(false)
   }
   return (
-    <ScrollView refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />} className="pl-3 pr-3 bg-whiteCustomized">
+    <ScrollView
+      refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
+      className="pl-3 pr-3 bg-whiteCustomized"
+    >
       {children}
     </ScrollView>
   )

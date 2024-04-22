@@ -1,8 +1,8 @@
 import { FC } from 'react'
 
-import CityActive from '@/components/elements/User/CityActive/CityActive'
 import RibbonProduct from '@/components/elements/Product/RibbonProducts/RibbonProduct'
 import PromotionsSlider from '@/components/elements/Promotion/PromotionsSlider/PromotionsSlider'
+import CityActive from '@/components/elements/User/CityActive/CityActive'
 import BaseLayout from '@/components/layouts/BaseLayout'
 
 const Home: FC = () => {

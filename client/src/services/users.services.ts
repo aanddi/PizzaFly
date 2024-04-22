@@ -20,7 +20,7 @@ export const UsersService = {
   async editUser(id: number | undefined, data: IUser) {
     return instance<IUser[]>({
       url: `/users/edit/${id}`,
-      method: 'GET',
+      method: 'PUT',
       data
     })
   }

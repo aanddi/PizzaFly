@@ -12,7 +12,6 @@ import { User } from '../entities/user.entity.js'
 
 const entities = [Categorie, Product, User, Order, OrderDesc, PromotionList, Promotion, City, StopList]
 
-
 // Render.com deploy database
 const AppDataSource = new DataSource({
    type: 'postgres',

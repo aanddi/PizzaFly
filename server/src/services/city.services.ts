@@ -29,7 +29,7 @@ export const CityService = {
    async editItem(req: Request, res: Response) {
       const cityId = req.params.id
 
-      const existingCity = await cityRepository.findOne({ where: { id: +cityId } });
+      const existingCity = await cityRepository.findOne({ where: { id: +cityId } })
 
       if (!existingCity) return res.status(404).json({ message: 'Город не найден' })
 

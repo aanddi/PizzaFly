@@ -39,7 +39,9 @@ const PromotionsSlider: FC = () => {
         </>
       )}
 
-      {!promotions && !isLoadingPromotions && <ErrorMessage message="Упс... Акции не найдены. Попробуйте перезагрузить страницу." />}
+      {!promotions && !isLoadingPromotions && (
+        <ErrorMessage message="Упс... Акции не найдены. Попробуйте перезагрузить страницу." />
+      )}
     </>
   )
 }

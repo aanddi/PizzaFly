@@ -17,7 +17,7 @@ export const CategoriesService = {
    async add(req: Request, res: Response) {
       try {
          const newCategorie = new Categorie()
-         newCategorie.name = req.body.name 
+         newCategorie.name = req.body.name
 
          const savedCategorie = await categorieRepository.save(newCategorie)
 
@@ -33,7 +33,7 @@ export const CategoriesService = {
       const existingProduct = await categorieRepository.findOne({ where: { id: +productId } })
 
       if (!existingProduct) return res.status(404).json({ message: 'Категория не найдена' })
-      
+
       try {
          existingProduct.name = req.body.name
 

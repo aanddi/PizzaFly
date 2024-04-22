@@ -2,16 +2,21 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE, persistReducer, persistStore } from 'redux-persist'
 
+import cityReducer from '@/store/city/city.slice'
 import userReducer from '@/store/user/user.slice'
 
-const rootReduser = combineReducers({ user: userReducer })
+const rootReducer = combineReducers({
+  user: userReducer,
+  city: cityReducer
+})
 
 const persistConfig = {
   key: 'root',
-  storage: AsyncStorage
+  storage: AsyncStorage,
+  blacklist: []
 }
 
-const persistedReducer = persistReducer(persistConfig, rootReduser)
+const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 const setupStore = () => {
   return configureStore({
@@ -27,7 +32,7 @@ const setupStore = () => {
 
 const store = setupStore()
 
-export type TypeRootState = ReturnType<typeof rootReduser>
+export type TypeRootState = ReturnType<typeof rootReducer>
 export type AppStore = ReturnType<typeof setupStore>
 export type AppDuspatch = AppStore['dispatch']
 

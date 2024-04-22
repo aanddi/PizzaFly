@@ -9,7 +9,8 @@
       "build:watch": "tsc -w",
       "build": "rimraf dist && tsc",
       "ts.check": "tsc --project tsconfig.json",
-      "add-build": "git add dist"
+      "add-build": "git add dist",
+      "format": "prettier --write \"./**/*.{js,ts,json}\""
    },
    "pre-commit": [
       "ts.check",
@@ -24,6 +25,7 @@
       "express": "^4.19.2",
       "mysql": "^2.18.1",
       "pg": "^8.11.5",
+      "prettier": "^3.2.5",
       "reflect-metadata": "^0.2.2",
       "typeorm": "^0.3.20"
    },
