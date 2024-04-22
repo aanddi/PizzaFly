@@ -1,14 +1,31 @@
 import { MaterialIcons } from '@expo/vector-icons'
-import { FC } from 'react'
-import { Image, Text, View } from 'react-native'
+import { FC, useEffect, useState } from 'react'
+import { Image, Text, TouchableOpacity, View } from 'react-native'
 
 import IProduct from '@/types/product.interface'
+
+import { useTypedDispatch, useTypedSelector } from '@/hooks/redux'
+import { addTobasket, deleteFromBasket } from '@/store/basket/basket.slice'
 
 interface PropsCard {
   product: IProduct
 }
 
 const ProductCard: FC<PropsCard> = ({ product }) => {
+  const dispatch = useTypedDispatch()
+  const { products } = useTypedSelector(state => state.basket)
+
+  const [activeProduct, setActiveProduct] = useState<boolean>(false)
+  const [countProduct, setCountProduct] = useState(0)
+
+  useEffect(() => {
+    const activeProduct = products.find(elem => elem.id === product.id)
+    if (activeProduct) {
+      setCountProduct(activeProduct.count)
+      setActiveProduct(true)
+    } else setActiveProduct(false)
+  }, [products])
+
   return (
     <View className="rounded-xl border border-slate-200 mt-4">
       <View className="flex flex-row items-center gap-3 p-3">
@@ -29,9 +46,31 @@ const ProductCard: FC<PropsCard> = ({ product }) => {
               <Text className="font-bold text-xl">{product.price}</Text>
               <MaterialIcons name="currency-ruble" size={20} color="black" />
             </View>
-            <View className="flex flex-row items-center justify-center bg-orange-600 w-20 rounded-xl">
-              <Text className="font-black text-white text-center text-2xl">+</Text>
-            </View>
+
+            {activeProduct ? (
+              <View className="flex flex-row items-center bg-slate-300 p-1 rounded-xl">
+                <TouchableOpacity
+                  onPress={() => dispatch(deleteFromBasket(product))}
+                  className="bg-green-500 pl-2 pr-2 rounded-lg mr-4"
+                >
+                  <Text className="text-white font-bold text-lg">-</Text>
+                </TouchableOpacity>
+                <Text className="font-bold text-lg text-white">{countProduct}</Text>
+                <TouchableOpacity
+                  onPress={() => dispatch(addTobasket(product))}
+                  className=" bg-green-500 pl-2 pr-2 rounded-lg ml-4"
+                >
+                  <Text className="text-white font-bold text-lg">+</Text>
+                </TouchableOpacity>
+              </View>
+            ) : (
+              <TouchableOpacity
+                onPress={() => dispatch(addTobasket(product))}
+                className="flex flex-row items-center justify-center bg-orange-600 w-20 rounded-xl"
+              >
+                <Text className="font-black text-white text-center text-2xl">+</Text>
+              </TouchableOpacity>
+            )}
           </View>
         </View>
       </View>

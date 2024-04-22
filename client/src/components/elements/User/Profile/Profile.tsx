@@ -20,8 +20,6 @@ const Profile: FC = () => {
   const { user } = useTypedSelector(state => state.user)
   const { city } = useTypedSelector(state => state.city)
 
-  console.log(city)
-
   const [nameField, setNameField] = useState(user?.firstName)
   const [surnameField, setSurnameField] = useState(user?.surname)
   const [patronymicField, setPatronymicField] = useState(user?.patronymic)

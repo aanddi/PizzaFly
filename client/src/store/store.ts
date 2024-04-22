@@ -2,12 +2,14 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE, persistReducer, persistStore } from 'redux-persist'
 
+import basketReducer from '@/store/basket/basket.slice'
 import cityReducer from '@/store/city/city.slice'
 import userReducer from '@/store/user/user.slice'
 
 const rootReducer = combineReducers({
   user: userReducer,
-  city: cityReducer
+  city: cityReducer,
+  basket: basketReducer
 })
 
 const persistConfig = {

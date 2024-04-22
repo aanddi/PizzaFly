@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { FC } from 'react'
 
 import { menuData } from './menu.data'
+import { useTypedSelector } from '@/hooks/redux'
 
 const Tab = createBottomTabNavigator()
 
@@ -21,6 +22,7 @@ const screenNavigator = {
 }
 
 const BottomMenu: FC = () => {
+  const { length } = useTypedSelector(state => state.basket)
   return (
     <Tab.Navigator screenOptions={screenNavigator}>
       {menuData.map((item, index) => {
@@ -33,7 +35,7 @@ const BottomMenu: FC = () => {
               tabBarIcon: ({ focused }) => {
                 return <AntDesign name={item.icon} size={25} color={focused ? 'orange' : 'grey'} />
               },
-              // tabBarBadge: 3,
+              ...(item.name === 'Корзина' && length > 0 && { tabBarBadge: length }),
               headerTitleAlign: 'center'
             }}
           />
