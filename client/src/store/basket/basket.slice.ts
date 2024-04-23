@@ -10,12 +10,16 @@ interface IBasketState {
   products: IProductBasket[]
   length: number
   price: number
+  promocode: string | null
+  discont: number | null
 }
 
 const initialState: IBasketState = {
   products: [],
   length: 0,
-  price: 0
+  price: 0,
+  promocode: null,
+  discont: null
 }
 
 const basketSlice = createSlice({

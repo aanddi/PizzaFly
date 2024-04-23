@@ -9,6 +9,6 @@ router.post('/add', PromotionService.addItem)
 
 router.put('/edit/:id', PromotionService.editItem)
 
-router.get('/check', PromotionService.check)
+router.post('/check', PromotionService.check)
 
 export default router
