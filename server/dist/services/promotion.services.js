@@ -7,13 +7,8 @@ const userRepository = AppDataSource.getRepository(User);
 const orderRepository = AppDataSource.getRepository(Order);
 export const PromotionService = {
     async getPromotions(req, res) {
-        try {
-            const promotions = await promotionRepository.find();
-            res.json(promotions);
-        }
-        catch (error) {
-            res.status(500).json({ message: 'Ошибка при получении акций' });
-        }
+        const promotions = await promotionRepository.find();
+        res.json(promotions);
     },
     async addItem(req, res) {
         try {
@@ -47,11 +42,14 @@ export const PromotionService = {
         }
     },
     async check(req, res) {
-        const productsList = req.body.products;
         const price = req.body.price;
         const promocode = req.body.promocode;
         const userId = req.body.idUser;
-        if (promocode == 'НОВЫЙ') {
+        const nullDiscont = {
+            promocode: null,
+            discount: 0
+        };
+        if (promocode.toUpperCase() == 'НОВЫЙ') {
             const userOrders = await orderRepository.find({
                 where: {
                     user: {
@@ -66,11 +64,10 @@ export const PromotionService = {
                 };
                 res.json(response);
             }
-            else {
-                res.status(400).json({ message: 'Вы уже делали заказ с данного номера!' });
-            }
+            else
+                res.json(nullDiscont);
         }
-        if (promocode == 'ПИЦЦА') {
+        else if (promocode.toUpperCase() == 'КЛАСС') {
             if (+price >= 1500) {
                 const response = {
                     promocode: promocode,
@@ -79,9 +76,9 @@ export const PromotionService = {
                 res.json(response);
             }
             else
-                res.status(400).json({ message: 'Ваш заказ меньше 1500 рублей!' });
+                res.json(nullDiscont);
         }
-        if (promocode == 'СУПЕР') {
+        else if (promocode.toUpperCase() == 'СУПЕР') {
             if (+price >= 2500) {
                 const response = {
                     promocode: promocode,
@@ -90,7 +87,9 @@ export const PromotionService = {
                 res.json(response);
             }
             else
-                res.status(400).json({ message: 'Ваш заказ меньше 2500 рублей!' });
+                res.json(nullDiscont);
         }
+        else
+            res.json(nullDiscont);
     }
 };

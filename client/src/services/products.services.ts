@@ -2,6 +2,10 @@ import { instance } from '@/api/instance.api'
 
 import IProduct from '@/types/product.interface'
 
+interface IStopList {
+  idProducts: number
+}
+
 export const ProductsService = {
   async getProducts(categoriesId: number) {
     return instance<IProduct[]>({
@@ -10,6 +14,12 @@ export const ProductsService = {
       params: {
         categorie: categoriesId
       }
+    })
+  },
+  async getStopList(cityId: string) {
+    return instance<IStopList[]>({
+      url: `/products/stoplist/?city=${cityId}`,
+      method: 'GET',
     })
   }
 }

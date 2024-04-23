@@ -2,7 +2,7 @@ import { instance } from '@/api/instance.api'
 
 import IPromotion from '@/types/promotion.interface'
 
-interface IPromotionsCheck {
+export interface IPromotionsCheck {
   promocode: string
   discount: number
 }
@@ -23,7 +23,7 @@ export const PromotionsService = {
   
   async checkPromocode(data: IPromotionsRequest) {
     return instance<IPromotionsCheck>({
-      url: `/promotions/check`,
+      url: "/promotions/check",
       method: 'POST',
       data
     })

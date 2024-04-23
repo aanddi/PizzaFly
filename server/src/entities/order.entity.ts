@@ -5,7 +5,6 @@ import {
    JoinColumn,
    ManyToOne,
    OneToMany,
-   OneToOne,
    PrimaryGeneratedColumn,
    Relation,
    UpdateDateColumn
@@ -29,19 +28,28 @@ export class Order {
    payment: string
 
    @Column()
-   receipt: number
+   price: number
 
    @Column()
    status: string
 
+   @Column({ nullable: true })
+   comment: string
+
+   @Column({ nullable: true })
+   promocode: string
+
+   @Column({ nullable: true })
+   discont: number
+
    //=========== СВЯЗЬ ===========//
 
    // Связь многие ко одному. Много заказов может быть у юзера
-   @ManyToOne(() => User, user => user.orders, { nullable: false })
+   @ManyToOne(() => User, user => user.orders, { nullable: true })
    @JoinColumn({ name: 'user_id' })
    user: User
 
    // Связь с описанием заказа. Несколько описаний у одного заказа
-   @OneToMany(() => OrderDesc, orderDesc => orderDesc.order, { nullable: false })
+   @OneToMany(() => OrderDesc, orderDesc => orderDesc.order)
    desc: Relation<OrderDesc[]>
 }

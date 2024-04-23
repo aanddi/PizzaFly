@@ -13,6 +13,8 @@ import { Order } from './order.entity.js';
 let OrderDesc = class OrderDesc {
     id;
     count;
+    price;
+    discount;
     cost;
     //=========== СВЯЗЬ ===========//
     // Связь с продуктами, в одном заказе могут быть разные продукты
@@ -28,6 +30,14 @@ __decorate([
     Column({ name: 'count_product' }),
     __metadata("design:type", Number)
 ], OrderDesc.prototype, "count", void 0);
+__decorate([
+    Column({ name: 'price_product' }),
+    __metadata("design:type", Number)
+], OrderDesc.prototype, "price", void 0);
+__decorate([
+    Column({ name: 'discount_product' }),
+    __metadata("design:type", Number)
+], OrderDesc.prototype, "discount", void 0);
 __decorate([
     Column(),
     __metadata("design:type", Number)

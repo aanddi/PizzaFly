@@ -10,12 +10,8 @@ const orderRepository = AppDataSource.getRepository(Order)
 
 export const PromotionService = {
    async getPromotions(req: Request, res: Response) {
-      try {
-         const promotions = await promotionRepository.find()
-         res.json(promotions)
-      } catch (error) {
-         res.status(500).json({ message: 'Ошибка при получении акций' })
-      }
+      const promotions = await promotionRepository.find()
+      res.json(promotions)
    },
 
    async addItem(req: Request, res: Response) {
@@ -54,12 +50,16 @@ export const PromotionService = {
    },
 
    async check(req: Request, res: Response) {
-      const productsList = req.body.products
       const price = req.body.price
       const promocode = req.body.promocode
       const userId = req.body.idUser
 
-      if (promocode == 'НОВЫЙ') {
+      const nullDiscont = {
+         promocode: null,
+         discount: 0
+      }
+
+      if (promocode.toUpperCase() == 'НОВЫЙ') {
          const userOrders = await orderRepository.find({
             where: {
                user: {
@@ -74,29 +74,23 @@ export const PromotionService = {
                discount: 15
             }
             res.json(response)
-         } else {
-            res.status(400).json({ message: 'Вы уже делали заказ с данного номера!' })
-         }
-      }
-
-      if (promocode == 'ПИЦЦА') {
+         } else res.json(nullDiscont)
+      } else if (promocode.toUpperCase() == 'КЛАСС') {
          if (+price >= 1500) {
             const response = {
                promocode: promocode,
                discount: 10
             }
             res.json(response)
-         } else res.status(400).json({ message: 'Ваш заказ меньше 1500 рублей!' })
-      }
-
-      if (promocode == 'СУПЕР') {
+         } else res.json(nullDiscont)
+      } else if (promocode.toUpperCase() == 'СУПЕР') {
          if (+price >= 2500) {
             const response = {
                promocode: promocode,
                discount: 20
             }
             res.json(response)
-         } else res.status(400).json({ message: 'Ваш заказ меньше 2500 рублей!' })
-      }
+         } else res.json(nullDiscont)
+      } else res.json(nullDiscont)
    }
 }

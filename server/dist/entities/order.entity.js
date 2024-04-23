@@ -15,8 +15,11 @@ let Order = class Order {
     createdAt;
     updatedAt;
     payment;
-    receipt;
+    price;
     status;
+    comment;
+    promocode;
+    discont;
     //=========== СВЯЗЬ ===========//
     // Связь многие ко одному. Много заказов может быть у юзера
     user;
@@ -42,20 +45,32 @@ __decorate([
 __decorate([
     Column(),
     __metadata("design:type", Number)
-], Order.prototype, "receipt", void 0);
+], Order.prototype, "price", void 0);
 __decorate([
     Column(),
     __metadata("design:type", String)
 ], Order.prototype, "status", void 0);
 __decorate([
-    ManyToOne(() => User, user => user.orders, { nullable: false }),
+    Column({ nullable: true }),
+    __metadata("design:type", String)
+], Order.prototype, "comment", void 0);
+__decorate([
+    Column({ nullable: true }),
+    __metadata("design:type", String)
+], Order.prototype, "promocode", void 0);
+__decorate([
+    Column({ nullable: true }),
+    __metadata("design:type", Number)
+], Order.prototype, "discont", void 0);
+__decorate([
+    ManyToOne(() => User, user => user.orders, { nullable: true }),
     JoinColumn({ name: 'user_id' }),
     __metadata("design:type", User
     // Связь с описанием заказа. Несколько описаний у одного заказа
     )
 ], Order.prototype, "user", void 0);
 __decorate([
-    OneToMany(() => OrderDesc, orderDesc => orderDesc.order, { nullable: false }),
+    OneToMany(() => OrderDesc, orderDesc => orderDesc.order),
     __metadata("design:type", Object)
 ], Order.prototype, "desc", void 0);
 Order = __decorate([

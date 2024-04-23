@@ -1,9 +1,13 @@
 import { Request, Response } from 'express'
 import { In } from 'typeorm'
 import AppDataSource from '../config/db.config.js'
+import { City } from '../entities/city.entity.js'
 import { Product } from '../entities/product.entity.js'
+import { StopList } from '../entities/stop-list.entity.js'
 
 const productRepository = AppDataSource.getRepository(Product)
+const stopListRepository = AppDataSource.getRepository(StopList)
+const cityRepository = AppDataSource.getRepository(City)
 
 export const ProductService = {
    async getProducts(req: Request, res: Response) {
@@ -18,6 +22,38 @@ export const ProductService = {
       } catch (error) {
          res.status(500).json({ message: 'Ошибка при получении продуктов' })
       }
+   },
+
+   async getStopList(req: Request, res: Response) {
+      const cityName = req.query.city as string
+
+      const idCity = await cityRepository.findOne({
+         where: {
+            name: cityName
+         }
+      })
+
+      const stopList = await stopListRepository.find({
+         where: {
+            city: {
+               id: idCity?.id
+            }
+         },
+         relations: ['product'] 
+      })
+
+      res.json(stopList)
+   },
+
+   async addStopListItem(req: Request, res: Response) {
+      const newStopItem = new StopList()
+
+      newStopItem.city = req.body.city_id
+      newStopItem.product = req.body.product_id
+
+      const savedStopItem = await stopListRepository.save(newStopItem)
+
+      res.json(savedStopItem)
    },
 
    async addItem(req: Request, res: Response) {

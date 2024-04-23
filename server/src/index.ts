@@ -11,6 +11,7 @@ import CityRoutes from './routes/city.route.js'
 import ProductRoutes from './routes/product.route.js'
 import PromotionRoutes from './routes/promotion.route.js'
 import UsersRoutes from './routes/user.route.js'
+import OrdersRoutes from './routes/order.route.js'
 
 const PORT = process.env.PORT || 5000
 
@@ -35,6 +36,7 @@ route.use('/categories', CategoriestRoutes)
 route.use('/citys', CityRoutes)
 route.use('/promotions', PromotionRoutes)
 route.use('/users', UsersRoutes)
+route.use('/orders', OrdersRoutes)
 
 //========== DATABASE AND SERVER ==========//
 AppDataSource.initialize()

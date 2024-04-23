@@ -10,6 +10,12 @@ export class OrderDesc {
    @Column({ name: 'count_product' })
    count: number
 
+   @Column({ name: 'price_product' })
+   price: number
+
+   @Column({ name: 'discount_product' })
+   discount: number
+
    @Column()
    cost: number
 
@@ -18,10 +24,10 @@ export class OrderDesc {
    // Связь с продуктами, в одном заказе могут быть разные продукты
    @OneToOne(() => Product, product => product.orderDesc, { nullable: false })
    @JoinColumn({ name: 'product_id' })
-   products: Relation<Product>
+   products: Relation<Product[]>
 
    // Связь с заказами
    @ManyToOne(() => Order, order => order.desc, { nullable: false })
    @JoinColumn({ name: 'order_id' })
-   order: Relation<OrderDesc[]>
+   order: Relation<OrderDesc>
 }

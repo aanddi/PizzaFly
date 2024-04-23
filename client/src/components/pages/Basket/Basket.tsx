@@ -11,31 +11,37 @@ import Field from '@/components/ui/Field/Field'
 
 import { PromotionsService } from '@/services/promotions.services'
 
-import { useTypedSelector } from '@/hooks/redux'
-import { useMutation, useQuery } from '@tanstack/react-query'
-import { CitysServices } from '@/services/citys.serveces'
+import { useTypedDispatch, useTypedSelector } from '@/hooks/redux'
+import { addPromotions, resetDiscont } from '@/store/basket/basket.slice'
 
 const BasketPage: FC = () => {
-  const { products, length, price } = useTypedSelector(state => state.basket)
-  const { user, isAuth } = useTypedSelector(state => state.user)
+  const dispatch = useTypedDispatch()
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>()
 
-  const [promocodeField, setPromocodeField] = useState('')
+  const { products, length, price } = useTypedSelector(state => state.basket)
+  const { user, isAuth } = useTypedSelector(state => state.user)
 
-  const [isLoading, setIsLoading] = useState(false)
+  const [promocodeField, setPromocodeField] = useState<string>('')
 
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
-  const handleCheck = async () => {
+  const handleOrder = async () => {
     const data = {
       price: price,
       promocode: promocodeField,
       idUser: user?.id
     }
-    console.log(data)
-    setIsLoading(true)
-    const response = await PromotionsService.checkPromocode(data)
-    console.log(response.status)
-    setIsLoading(false)
+
+    dispatch(resetDiscont())
+
+    if (promocodeField) {
+      setIsLoading(true)
+      const response = await PromotionsService.checkPromocode(data)
+      dispatch(addPromotions(response.data))
+      setIsLoading(false)
+    }
+
+    navigation.navigate('Новый заказ')
   }
 
   return (
@@ -61,19 +67,15 @@ const BasketPage: FC = () => {
                 <MaterialIcons name="currency-ruble" size={20} color="black" />
               </View>
             </View>
-            <View>
-              <Field placeholder="Введите промокод" onChangeText={setPromocodeField} value={promocodeField} />
-              <View className="mt-2">
-                <Button title="Применить" color="#373636" onPress={handleCheck} />
-              </View>
-            </View>
-            <View className="mt-10">
-              <Button
-                title="Оформить заказ"
-                color="#22C707"
-                onPress={() => navigation.navigate('Новый заказ')}
-                disabled={!isAuth}
-              />
+
+            <Field placeholder="Введите промокод" onChangeText={setPromocodeField} />
+
+            <View className="mt-5">
+              {isLoading ? (
+                <Text className="text-center mt-2 mb-2 text-green-500 font-bold">Загрузка...</Text>
+              ) : (
+                <Button title="Оформить заказ" color="#22C707" onPress={handleOrder} disabled={!isAuth} />
+              )}
             </View>
             {!isAuth && <Text className="text-center text-red-500 mt-5">Авторизируйтесь в приложении, чтобы оформить заказ</Text>}
           </View>

@@ -4,12 +4,14 @@ import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE, persistReducer, pers
 
 import basketReducer from '@/store/basket/basket.slice'
 import cityReducer from '@/store/city/city.slice'
+import stopListReducer from '@/store/stopList/stopList.slice'
 import userReducer from '@/store/user/user.slice'
 
 const rootReducer = combineReducers({
   user: userReducer,
   city: cityReducer,
-  basket: basketReducer
+  basket: basketReducer,
+  stopList: stopListReducer
 })
 
 const persistConfig = {

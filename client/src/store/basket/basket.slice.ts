@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+import { IPromotionsCheck } from '@/services/promotions.services'
+
 import IProduct from '@/types/product.interface'
 
 interface IProductBasket extends IProduct {
@@ -19,7 +21,7 @@ const initialState: IBasketState = {
   length: 0,
   price: 0,
   promocode: null,
-  discont: null
+  discont: 0
 }
 
 const basketSlice = createSlice({
@@ -48,11 +50,22 @@ const basketSlice = createSlice({
       else state.products.splice(searchProduct, 1)
 
       state.length = state.products.reduce((acc, elem) => elem.count + acc, 0)
-      state.price = state.products.reduce((acc, elem) => elem.price + acc, 0)
+      state.price = state.products.reduce((acc, elem) => elem.price * elem.count + acc, 0)
+    },
+
+    resetDiscont(state) {
+      state.promocode = null
+      state.discont = 0
+    },
+
+    addPromotions(state, action) {
+      const poromotions: IPromotionsCheck = action.payload
+      state.promocode = poromotions.promocode
+      state.discont = poromotions.discount
     }
   }
 })
 
-export const { addTobasket, deleteFromBasket } = basketSlice.actions
+export const { addTobasket, deleteFromBasket, addPromotions, resetDiscont } = basketSlice.actions
 
 export default basketSlice.reducer

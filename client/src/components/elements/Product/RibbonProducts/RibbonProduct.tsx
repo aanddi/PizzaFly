@@ -10,8 +10,14 @@ import { ProductsService } from '@/services/products.services'
 
 import ErrorMessage from '../../app/ErrorMessage/ErrorMessage'
 
+import { useTypedDispatch, useTypedSelector } from '@/hooks/redux'
+import { changeStopList } from '@/store/stopList/stopList.slice'
+
 const RibbonProduct: FC = () => {
   const queryClient = useQueryClient()
+  const dispatch = useTypedDispatch()
+
+  const { city } = useTypedSelector(state => state.city)
 
   const [categorieId, setCategoriesId] = useState<number>(1)
 
@@ -31,10 +37,20 @@ const RibbonProduct: FC = () => {
     }
   })
 
+  const { data: stopList } = useQuery({
+    queryKey: ['stopList', city],
+    queryFn: async () => {
+      const response = await ProductsService.getStopList(city)
+      dispatch(changeStopList(response.data))
+      return response.data
+    }
+  })
+
   useEffect(() => {
     queryClient.invalidateQueries({ queryKey: ['products', categorieId] })
     queryClient.invalidateQueries({ queryKey: ['categories'] })
     queryClient.invalidateQueries({ queryKey: ['promotions'] })
+    queryClient.invalidateQueries({ queryKey: ['stopList', city] })
   }, [])
 
   return (
@@ -55,8 +71,7 @@ const RibbonProduct: FC = () => {
                   setCategoriesId(item.id)
                   queryClient.invalidateQueries({ queryKey: ['products', categorieId] })
                 }}
-                className={`pr-4 pl-4 pt-2 pb-2 rounded-lg ${categorieId === item.id ? 'bg-orange-500' : null}`}
-              >
+                className={`pr-4 pl-4 pt-2 pb-2 rounded-lg ${categorieId === item.id ? 'bg-orange-500' : null}`}>
                 <Text className={`font-bold text-center ${categorieId === item.id && 'text-white'}`}>{item.name}</Text>
               </TouchableOpacity>
             )
