@@ -46,6 +46,8 @@ const RibbonProduct: FC = () => {
     }
   })
 
+  console.log(stopList)
+
   useEffect(() => {
     queryClient.invalidateQueries({ queryKey: ['products', categorieId] })
     queryClient.invalidateQueries({ queryKey: ['categories'] })
