@@ -2,6 +2,7 @@ import { AntDesign, Feather } from '@expo/vector-icons'
 import { ParamListBase, useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { useMutation } from '@tanstack/react-query'
+import LottieView from 'lottie-react-native'
 import React, { FC, useState } from 'react'
 import { Button, Text, TouchableOpacity, View } from 'react-native'
 
@@ -46,7 +47,10 @@ const Profile: FC = () => {
 
   return (
     <BaseLayout>
-      <View className="mt-5 bg-slate-800 p-2 rounded-md">
+      <View style={{ height: 200, aspectRatio: 1, justifyContent: 'center', alignSelf: 'center'}} >
+        <LottieView style={{ flex: 1 }} source={require('../../../../assets/lottie/profile.json')} autoPlay loop />
+      </View>
+      <View className=" bg-slate-800 p-2 rounded-md">
         <Text className=" text-center font-black text-xl text-white">
           {user?.firstName ? `Здравствуйте, ${user?.firstName}!` : 'Здравствуйте!'}
         </Text>
