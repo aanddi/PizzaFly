@@ -105,7 +105,7 @@ const NewOrders: FC = () => {
         <View className="bg-gray-200 p-4 rounded-md">
           {products.map(product => {
             return (
-              <>
+              <View key={product.id}>
                 <View className="flex flex-row justify-between">
                   <Text>{product.name}</Text>
                   <Text>
@@ -113,7 +113,7 @@ const NewOrders: FC = () => {
                   </Text>
                 </View>
                 <View className="border-t-2 border-solid mt-3 mb-3"></View>
-              </>
+              </View>
             )
           })}
         </View>

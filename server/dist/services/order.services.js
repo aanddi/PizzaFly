@@ -4,6 +4,14 @@ import { Order } from '../entities/order.entity.js';
 const orderRepository = AppDataSource.getRepository(Order);
 const orderDescRepository = AppDataSource.getRepository(OrderDesc);
 export const OrderService = {
+    async getAll(req, res) {
+        const orders = await orderRepository.find();
+        res.json(orders);
+    },
+    async getAllDesc(req, res) {
+        const ordersDesc = await orderDescRepository.find();
+        res.json(ordersDesc);
+    },
     async newOrder(req, res) {
         //==== Создание заказа
         const productsOrder = req.body.products;

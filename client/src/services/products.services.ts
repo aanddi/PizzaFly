@@ -2,8 +2,9 @@ import { instance } from '@/api/instance.api'
 
 import IProduct from '@/types/product.interface'
 
-interface IStopList {
-  idProducts: number
+interface IStopList  {
+  id: number
+  product: IProduct
 }
 
 export const ProductsService = {

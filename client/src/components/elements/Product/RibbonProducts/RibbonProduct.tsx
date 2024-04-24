@@ -46,14 +46,14 @@ const RibbonProduct: FC = () => {
     }
   })
 
-  console.log(stopList)
-
   useEffect(() => {
-    queryClient.invalidateQueries({ queryKey: ['products', categorieId] })
-    queryClient.invalidateQueries({ queryKey: ['categories'] })
-    queryClient.invalidateQueries({ queryKey: ['promotions'] })
-    queryClient.invalidateQueries({ queryKey: ['stopList', city] })
+    queryClient.refetchQueries({ queryKey: ['products', categorieId] })
+    queryClient.refetchQueries({ queryKey: ['categories'] })
+    queryClient.refetchQueries({ queryKey: ['promotions'] })
+    queryClient.refetchQueries({ queryKey: ['stopList', city] })
   }, [])
+
+  console.log(stopList)
 
   return (
     <ScrollView>

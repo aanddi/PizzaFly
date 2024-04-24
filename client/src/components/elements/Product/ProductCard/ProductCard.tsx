@@ -14,9 +14,12 @@ interface PropsCard {
 const ProductCard: FC<PropsCard> = ({ product }) => {
   const dispatch = useTypedDispatch()
   const { products } = useTypedSelector(state => state.basket)
+  const { productsStopList } = useTypedSelector(state => state.stopList)
 
   const [activeProduct, setActiveProduct] = useState<boolean>(false)
   const [countProduct, setCountProduct] = useState(0)
+
+  const [inStopList, setInStopList] = useState<boolean>(false)
 
   useEffect(() => {
     const activeProduct = products.find(elem => elem.id === product.id)
@@ -24,7 +27,14 @@ const ProductCard: FC<PropsCard> = ({ product }) => {
       setCountProduct(activeProduct.count)
       setActiveProduct(true)
     } else setActiveProduct(false)
-  }, [products])
+  }, [products, productsStopList])
+
+  useEffect(() => {
+    const isInStopList = productsStopList.some(item => item.product.id === product.id)
+    setInStopList(isInStopList)
+  }, [product.id, productsStopList])
+
+  console.log(productsStopList)
 
   return (
     <View className="rounded-xl border border-slate-200 mt-4">
@@ -46,28 +56,26 @@ const ProductCard: FC<PropsCard> = ({ product }) => {
               <Text className="font-bold text-xl">{product.price}</Text>
               <MaterialIcons name="currency-ruble" size={20} color="black" />
             </View>
-
-            {activeProduct ? (
+            {inStopList ? (
+              <Text className="text-center text-gray-400">Нет в наличии</Text>
+            ) : activeProduct ? (
               <View className="flex flex-row items-center bg-slate-300 p-1 rounded-xl">
                 <TouchableOpacity
                   onPress={() => dispatch(deleteFromBasket(product))}
-                  className="bg-green-500 pl-2 pr-2 rounded-lg mr-4"
-                >
+                  className="bg-green-500 pl-2 pr-2 rounded-lg mr-4">
                   <Text className="text-white font-bold text-lg">-</Text>
                 </TouchableOpacity>
                 <Text className="font-bold text-lg text-white">{countProduct}</Text>
                 <TouchableOpacity
                   onPress={() => dispatch(addTobasket(product))}
-                  className=" bg-green-500 pl-2 pr-2 rounded-lg ml-4"
-                >
+                  className=" bg-green-500 pl-2 pr-2 rounded-lg ml-4">
                   <Text className="text-white font-bold text-lg">+</Text>
                 </TouchableOpacity>
               </View>
             ) : (
               <TouchableOpacity
                 onPress={() => dispatch(addTobasket(product))}
-                className="flex flex-row items-center justify-center bg-orange-600 w-20 rounded-xl"
-              >
+                className="flex flex-row items-center justify-center bg-orange-600 w-20 rounded-xl">
                 <Text className="font-black text-white text-center text-2xl">+</Text>
               </TouchableOpacity>
             )}

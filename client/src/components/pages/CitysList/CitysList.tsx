@@ -9,13 +9,15 @@ import BaseLayout from '@/components/layouts/BaseLayout'
 
 import { CitysServices } from '@/services/citys.serveces'
 
-import { useTypedDispatch } from '@/hooks/redux'
+import { useTypedDispatch, useTypedSelector } from '@/hooks/redux'
 import { change } from '@/store/city/city.slice'
 
 const CitysList: FC = () => {
   const queryClient = useQueryClient()
   const dispatch = useTypedDispatch()
   const navigation = useNavigation()
+
+  const { city } = useTypedSelector(state => state.city)
 
   const { data: citys, isLoading: isLoadingCitys } = useQuery({
     queryKey: ['citys'],
@@ -26,11 +28,14 @@ const CitysList: FC = () => {
   })
 
   useEffect(() => {
-    queryClient.invalidateQueries({ queryKey: ['citys'] })
+    queryClient.invalidateQueries({ queryKey: ['products', 1] })
+    queryClient.invalidateQueries({ queryKey: ['stopList', city] })
   }, [])
 
   const handleChangeCity = (name: string) => {
     dispatch(change(name))
+    queryClient.invalidateQueries({ queryKey: ['products', 1] })
+    queryClient.invalidateQueries({ queryKey: ['stopList', name] })
     navigation.goBack()
   }
 

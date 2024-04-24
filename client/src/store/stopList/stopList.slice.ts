@@ -1,15 +1,17 @@
+import IProduct from '@/types/product.interface'
 import { createSlice } from '@reduxjs/toolkit'
 
 interface IStopList {
-  idProducts: number
+  id: number
+  product: IProduct 
 }
 
 interface IStopListState {
-  products: IStopList[]
+  productsStopList: IStopList[]
 }
 
 const initialState: IStopListState = {
-  products: []
+  productsStopList: []
 }
 
 const stopListSlice = createSlice({
@@ -18,7 +20,7 @@ const stopListSlice = createSlice({
 
   reducers: {
     changeStopList(state, actions) {
-      state.products = actions.payload
+      state.productsStopList = actions.payload
     }
   }
 })

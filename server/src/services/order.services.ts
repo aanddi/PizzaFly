@@ -12,6 +12,20 @@ interface OrderDescItem extends Product {
 }
 
 export const OrderService = {
+   async getAll(req: Request, res: Response) {
+      const orders = await orderRepository.find()
+
+      res.json(orders)
+   },
+
+   async getAllDesc(req: Request, res: Response) {
+      const ordersDesc = await orderDescRepository.find()
+
+      res.json(ordersDesc)
+   },
+
+   
+
    async newOrder(req: Request, res: Response) {
       //==== Создание заказа
       const productsOrder: OrderDescItem[] = req.body.products
