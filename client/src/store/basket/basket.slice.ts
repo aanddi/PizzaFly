@@ -38,7 +38,8 @@ const basketSlice = createSlice({
       else state.products.push({ ...newProduct, count: 1 })
 
       state.length = state.products.reduce((acc, elem) => elem.count + acc, 0)
-      state.price = state.products.reduce((acc, elem) => elem.price * elem.count + acc, 0)
+      // price считается с учетом скидки на позицию и количество
+      state.price = state.products.reduce((acc, elem) => (elem.price - (elem.price * elem.discount) / 100) * elem.count + acc, 0)
     },
 
     deleteFromBasket(state, action) {
@@ -50,7 +51,8 @@ const basketSlice = createSlice({
       else state.products.splice(searchProduct, 1)
 
       state.length = state.products.reduce((acc, elem) => elem.count + acc, 0)
-      state.price = state.products.reduce((acc, elem) => elem.price * elem.count + acc, 0)
+      // price считается с учетом скидки на позицию и количество
+      state.price = state.products.reduce((acc, elem) => (elem.price - (elem.price * elem.discount) / 100) * elem.count + acc, 0)
     },
 
     resetDiscont(state) {
@@ -62,10 +64,18 @@ const basketSlice = createSlice({
       const poromotions: IPromotionsCheck = action.payload
       state.promocode = poromotions.promocode
       state.discont = poromotions.discount
+    },
+
+    resetBasket(state) {
+      state.products = []
+      state.length = 0
+      state.price = 0
+      state.promocode = null
+      state.discont = 0
     }
   }
 })
 
-export const { addTobasket, deleteFromBasket, addPromotions, resetDiscont } = basketSlice.actions
+export const { addTobasket, deleteFromBasket, addPromotions, resetDiscont, resetBasket } = basketSlice.actions
 
 export default basketSlice.reducer

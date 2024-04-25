@@ -9,8 +9,71 @@ export const OrderService = {
         res.json(orders);
     },
     async getAllDesc(req, res) {
-        const ordersDesc = await orderDescRepository.find();
+        const ordersDesc = await orderDescRepository.find({ relations: ['order', 'product'], loadRelationIds: true });
         res.json(ordersDesc);
+    },
+    async deleteDescOrder(req, res) {
+        try {
+            const idDescOrder = req.params.id;
+            // Попытка найти запись описания заказа по переданному идентификатору
+            const orderDescToRemove = await orderDescRepository.findOne({
+                where: {
+                    id: +idDescOrder
+                }
+            });
+            if (!orderDescToRemove)
+                return res.status(404).json({ message: 'Запись описания заказа не найдена' });
+            // Удаление записи описания заказа
+            await orderDescRepository.remove(orderDescToRemove);
+            return res.json({ message: 'Запись описания заказа успешно удалена' });
+        }
+        catch (error) {
+            console.error('Ошибка при удалении записи описания заказа:', error);
+            return res.status(500).json({ message: 'Произошла ошибка при удалении записи описания заказа' });
+        }
+    },
+    async deleteOrder(req, res) {
+        try {
+            const idOrder = req.params.id;
+            // Попытка найти запись описания заказа по переданному идентификатору
+            const orderToRemove = await orderRepository.findOne({
+                where: {
+                    id: +idOrder
+                }
+            });
+            if (!orderToRemove)
+                return res.status(404).json({ message: 'Запись описания заказа не найдена' });
+            // Удаление записи описания заказа
+            await orderRepository.remove(orderToRemove);
+            return res.json({ message: 'Запись заказа успешно удалена' });
+        }
+        catch (error) {
+            console.error('Ошибка при удалении записи заказа:', error);
+            return res.status(500).json({ message: 'Произошла ошибка при удалении заказа' });
+        }
+    },
+    async getOrderByIdUser(req, res) {
+        const idUser = req.params.id;
+        const orders = await orderRepository.find({
+            where: {
+                user: {
+                    id: +idUser
+                }
+            }
+        });
+        res.json(orders);
+    },
+    async getOrderDescById(req, res) {
+        const idOrder = req.params.id;
+        const desc = await orderDescRepository.find({
+            where: {
+                order: {
+                    id: +idOrder
+                }
+            },
+            relations: ['product']
+        });
+        res.json(desc);
     },
     async newOrder(req, res) {
         //==== Создание заказа
@@ -35,8 +98,8 @@ export const OrderService = {
             const newOrderDesc = new OrderDesc();
             // расчет полной стоимости позиции с учетом количества и скидки на позицию
             const totalPrice = product.price * (1 - product.discount / 100) * product.count;
-            newOrderDesc.order = orderId; // ??
-            newOrderDesc.products = product.id; // ??
+            newOrderDesc.order = orderId; // ?? ошибка типизации, хз как дефать
+            newOrderDesc.product = product.id; // ?? ошибка типизации, хз как дефать
             newOrderDesc.count = product.count;
             newOrderDesc.cost = totalPrice;
             newOrderDesc.price = product.price;

@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn, Relation } from 'typeorm'
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, Relation } from 'typeorm'
 import { Categorie } from './categorie.entity.js'
 import { OrderDesc } from './order-desc.entity.js'
 import { PromotionList } from './promotions-list.entity.js'
@@ -32,9 +32,9 @@ export class Product {
 
    //=========== СВЯЗЬ ===========//
 
-   // Связь с заказом, разные продукты могут быть в одном заказе
-   @OneToOne(() => OrderDesc, order => order.products)
-   orderDesc: Relation<OrderDesc>
+   // Обратная связь с описаниями заказов
+   @OneToMany(() => OrderDesc, orderDesc => orderDesc.product)
+   orderDesc: Relation<OrderDesc[]>
 
    // Связь с категорией, нескольким продуктам может принадлежать одна категория (под вопросом правильно или нет)
    @ManyToOne(() => Categorie, categorie => categorie.products, { nullable: false })

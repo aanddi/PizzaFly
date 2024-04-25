@@ -20,10 +20,10 @@ export const PromotionsService = {
       method: 'GET'
     })
   },
-  
+
   async checkPromocode(data: IPromotionsRequest) {
     return instance<IPromotionsCheck>({
-      url: "/promotions/check",
+      url: '/promotions/check',
       method: 'POST',
       data
     })

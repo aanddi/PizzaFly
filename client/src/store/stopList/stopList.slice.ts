@@ -1,9 +1,10 @@
-import IProduct from '@/types/product.interface'
 import { createSlice } from '@reduxjs/toolkit'
+
+import IProduct from '@/types/product.interface'
 
 interface IStopList {
   id: number
-  product: IProduct 
+  product: IProduct
 }
 
 interface IStopListState {

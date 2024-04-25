@@ -1,6 +1,6 @@
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn, Relation } from 'typeorm'
-import { Product } from './product.entity.js'
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, Relation } from 'typeorm'
 import { Order } from './order.entity.js'
+import { Product } from './product.entity.js'
 
 @Entity()
 export class OrderDesc {
@@ -21,13 +21,13 @@ export class OrderDesc {
 
    //=========== СВЯЗЬ ===========//
 
-   // Связь с продуктами, в одном заказе могут быть разные продукты
-   @OneToOne(() => Product, product => product.orderDesc, { nullable: false })
+   // Связь с продуктом
+   @ManyToOne(() => Product, product => product.orderDesc, { nullable: false })
    @JoinColumn({ name: 'product_id' })
-   products: Relation<Product[]>
+   product: Relation<Product>
 
    // Связь с заказами
    @ManyToOne(() => Order, order => order.desc, { nullable: false })
    @JoinColumn({ name: 'order_id' })
-   order: Relation<OrderDesc>
+   order: Relation<Order>
 }

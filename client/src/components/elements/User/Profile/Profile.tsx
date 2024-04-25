@@ -47,20 +47,21 @@ const Profile: FC = () => {
 
   return (
     <BaseLayout>
-      <View style={{ height: 200, aspectRatio: 1, justifyContent: 'center', alignSelf: 'center'}} >
+      <View style={{ height: 200, aspectRatio: 1, justifyContent: 'center', alignSelf: 'center' }}>
         <LottieView style={{ flex: 1 }} source={require('../../../../assets/lottie/profile.json')} autoPlay loop />
       </View>
-      <View className=" bg-slate-800 p-2 rounded-md">
-        <Text className=" text-center font-black text-xl text-white">
+      <View>
+        <Text className="text-center font-black text-xl ">
           {user?.firstName ? `Здравствуйте, ${user?.firstName}!` : 'Здравствуйте!'}
         </Text>
+        <View className="border-t-2 border-slate-200 border-solid mt-3 mb-3"></View>
       </View>
 
       <View className="flex justify-between flex-row items-center mt-5">
-        <Text className="font-bold">{user?.phone}</Text>
+        <Text className="font-bold text-gray-500">{user?.phone}</Text>
         <TouchableOpacity className="flex flex-row gap-1 items-center" onPress={() => navigation.navigate('Города')}>
           <Feather name="map-pin" size={15} color="gray" />
-          <Text className="font-bold">{city}</Text>
+          <Text className="font-bold text-gray-500">{city}</Text>
         </TouchableOpacity>
       </View>
 
@@ -99,7 +100,7 @@ const Profile: FC = () => {
         />
       </View>
 
-      <View className="mt-10">
+      <View className="mt-10 mb-10">
         {isLoading ? (
           <View>
             <Text className="text-center mt-2 mb-2 text-blue-500 font-bold">Загрузка...</Text>

@@ -2,7 +2,7 @@ import { instance } from '@/api/instance.api'
 
 import IProduct from '@/types/product.interface'
 
-interface IStopList  {
+interface IStopList {
   id: number
   product: IProduct
 }
@@ -20,7 +20,7 @@ export const ProductsService = {
   async getStopList(cityId: string) {
     return instance<IStopList[]>({
       url: `/products/stoplist/?city=${cityId}`,
-      method: 'GET',
+      method: 'GET'
     })
   }
 }

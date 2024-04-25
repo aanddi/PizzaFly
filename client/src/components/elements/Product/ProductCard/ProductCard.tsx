@@ -34,8 +34,6 @@ const ProductCard: FC<PropsCard> = ({ product }) => {
     setInStopList(isInStopList)
   }, [product.id, productsStopList])
 
-  console.log(productsStopList)
-
   return (
     <View className="rounded-xl border border-slate-200 mt-4">
       <View className="flex flex-row items-center gap-3 p-3">
@@ -48,13 +46,28 @@ const ProductCard: FC<PropsCard> = ({ product }) => {
           />
         </View>
         <View className="flex flex-1">
-          <Text className="font-black text-lg mb-2">{product.name}</Text>
+          <View className="flex flex-row justify-between">
+            <Text className="font-black text-lg mb-2">{product.name}</Text>
+            {product.discount > 0 && (
+              <View>
+                <Text className="bg-orange-500 p-1 pr-2 pl-2 rounded-lg text-white text-xs font-bold">-{product.discount}%</Text>
+              </View>
+            )}
+          </View>
           <Text className="font-bold text-xs mb-2 text-gray-500">{product.size}</Text>
           <Text className="text-justify text-gray-400 text-xs">{product.desc}</Text>
           <View className="mt-4 flex flex-row items-center justify-between">
-            <View className="flex flex-row items-center">
-              <Text className="font-bold text-xl">{product.price}</Text>
-              <MaterialIcons name="currency-ruble" size={20} color="black" />
+            <View className="">
+              <View className="flex flex-row items-center">
+                <Text className="font-bold text-xl">{product.price - (product.price * product.discount) / 100}</Text>
+                <MaterialIcons name="currency-ruble" size={20} color="black" />
+              </View>
+              {product.discount > 0 && (
+                <View className="flex flex-row items-center mt-1">
+                  <Text className="text-md line-through text-gray-500">{product.price}</Text>
+                  <MaterialIcons name="currency-ruble" size={15} color="gray" />
+                </View>
+              )}
             </View>
             {inStopList ? (
               <Text className="text-center text-gray-400">Нет в наличии</Text>
@@ -62,20 +75,23 @@ const ProductCard: FC<PropsCard> = ({ product }) => {
               <View className="flex flex-row items-center bg-slate-300 p-1 rounded-xl">
                 <TouchableOpacity
                   onPress={() => dispatch(deleteFromBasket(product))}
-                  className="bg-green-500 pl-2 pr-2 rounded-lg mr-4">
+                  className="bg-green-500 pl-2 pr-2 rounded-lg mr-4"
+                >
                   <Text className="text-white font-bold text-lg">-</Text>
                 </TouchableOpacity>
                 <Text className="font-bold text-lg text-white">{countProduct}</Text>
                 <TouchableOpacity
                   onPress={() => dispatch(addTobasket(product))}
-                  className=" bg-green-500 pl-2 pr-2 rounded-lg ml-4">
+                  className=" bg-green-500 pl-2 pr-2 rounded-lg ml-4"
+                >
                   <Text className="text-white font-bold text-lg">+</Text>
                 </TouchableOpacity>
               </View>
             ) : (
               <TouchableOpacity
                 onPress={() => dispatch(addTobasket(product))}
-                className="flex flex-row items-center justify-center bg-orange-600 w-20 rounded-xl">
+                className="flex flex-row items-center justify-center bg-orange-600 w-20 rounded-xl"
+              >
                 <Text className="font-black text-white text-center text-2xl">+</Text>
               </TouchableOpacity>
             )}

@@ -39,7 +39,7 @@ export const ProductService = {
                id: idCity?.id
             }
          },
-         relations: ['product'] 
+         relations: ['product']
       })
 
       res.json(stopList)

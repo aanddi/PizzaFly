@@ -53,8 +53,6 @@ const RibbonProduct: FC = () => {
     queryClient.refetchQueries({ queryKey: ['stopList', city] })
   }, [])
 
-  console.log(stopList)
-
   return (
     <ScrollView>
       {isLoadingCategories && (
@@ -73,7 +71,8 @@ const RibbonProduct: FC = () => {
                   setCategoriesId(item.id)
                   queryClient.invalidateQueries({ queryKey: ['products', categorieId] })
                 }}
-                className={`pr-4 pl-4 pt-2 pb-2 rounded-lg ${categorieId === item.id ? 'bg-orange-500' : null}`}>
+                className={`pr-4 pl-4 pt-2 pb-2 rounded-lg ${categorieId === item.id ? 'bg-orange-500' : null}`}
+              >
                 <Text className={`font-bold text-center ${categorieId === item.id && 'text-white'}`}>{item.name}</Text>
               </TouchableOpacity>
             )

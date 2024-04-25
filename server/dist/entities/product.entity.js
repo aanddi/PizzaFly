@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Categorie } from './categorie.entity.js';
 import { OrderDesc } from './order-desc.entity.js';
 import { PromotionList } from './promotions-list.entity.js';
@@ -22,7 +22,7 @@ let Product = class Product {
     discount;
     tags;
     //=========== СВЯЗЬ ===========//
-    // Связь с заказом, разные продукты могут быть в одном заказе
+    // Обратная связь с описаниями заказов
     orderDesc;
     // Связь с категорией, нескольким продуктам может принадлежать одна категория (под вопросом правильно или нет)
     categorie;
@@ -64,7 +64,7 @@ __decorate([
     __metadata("design:type", String)
 ], Product.prototype, "tags", void 0);
 __decorate([
-    OneToOne(() => OrderDesc, order => order.products),
+    OneToMany(() => OrderDesc, orderDesc => orderDesc.product),
     __metadata("design:type", Object)
 ], Product.prototype, "orderDesc", void 0);
 __decorate([
