@@ -6,11 +6,11 @@ import { OrderDesc } from '../entities/order-desc.entity.js'
 import { Order } from '../entities/order.entity.js'
 import { Product } from '../entities/product.entity.js'
 import { Promotion } from '../entities/promotion.entity.js'
-import { PromotionList } from '../entities/promotions-list.entity.js'
+
 import { StopList } from '../entities/stop-list.entity.js'
 import { User } from '../entities/user.entity.js'
 
-const entities = [Categorie, Product, User, Order, OrderDesc, PromotionList, Promotion, City, StopList]
+const entities = [Categorie, Product, User, Order, OrderDesc, Promotion, City, StopList]
 
 // Render.com deploy database
 const AppDataSource = new DataSource({

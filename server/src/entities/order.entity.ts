@@ -42,6 +42,9 @@ export class Order {
    @Column({ nullable: true })
    discont: number
 
+   @Column({ nullable: false })
+   address: string
+
    //=========== СВЯЗЬ ===========//
 
    // Связь многие ко одному. Много заказов может быть у юзера

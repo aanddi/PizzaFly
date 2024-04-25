@@ -3,10 +3,11 @@ import { ParamListBase, useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { useMutation } from '@tanstack/react-query'
 import { FC, useEffect, useState } from 'react'
-import { Button, Text, View } from 'react-native'
+import { Text, View } from 'react-native'
 import { RadioButton } from 'react-native-paper'
 
 import BaseLayout from '@/components/layouts/BaseLayout'
+import ButtonCustom from '@/components/ui/Button/ButtonCustom'
 import Field from '@/components/ui/Field/Field'
 
 import { OrdersService } from '@/services/order.services'
@@ -46,21 +47,22 @@ const NewOrders: FC = () => {
         comment: comment,
         promocode: promocode,
         discont: discont,
-        products: products
+        products: products,
+        address: adressOrder
       }
       setIsLoading(true)
       const response = await OrdersService.newOrder(data)
       setIsLoading(false)
       if (response.status === 200) {
         dispatch(resetBasket())
-        navigation.navigate('Меню')
+        navigation.navigate('SuccessfulOrder')
       }
       return response.data
     }
   })
 
   const handleOrders = async () => {
-    if (adressOrder && adressOrder?.length < 10) setErrorAdress(true)
+    if (!adressOrder || adressOrder.length < 5) setErrorAdress(true)
     else {
       orderMutation.mutate()
     }
@@ -68,17 +70,23 @@ const NewOrders: FC = () => {
 
   return (
     <BaseLayout>
-      <View className="mt-3">
-        <Text className="font-bold text-lg">Информация о заказе</Text>
+      <View className="mt-4">
+        <Text className="font-bold text-xl">Информация о заказе</Text>
 
         {promocode ? (
           <View className="mt-2">
-            <Text>Ваш промокод: {promocode}</Text>
-            <Text>Ваша скидка: {discont}%</Text>
+            <View className="flex flex-row gap-1">
+              <Text className="font-bold text-slate-500">Промокод:</Text>
+              <Text className="text-slate-400">{promocode}</Text>
+            </View>
+            <View className="flex flex-row gap-1">
+              <Text className="font-bold text-slate-500">Скидка:</Text>
+              <Text className="text-slate-400">{discont}%</Text>
+            </View>
           </View>
         ) : (
           <View className="mt-2">
-            <Text>Промокод отсутствует.</Text>
+            <Text className="font-bold text-slate-500">Промокод отсутствует.</Text>
             <Text className="text-gray-300 text-xs mt-1">
               Eсли вы вводили промокод, то проверьте условия скидки или правильность ввода промокода.
             </Text>
@@ -114,19 +122,19 @@ const NewOrders: FC = () => {
       </View>
 
       <View className="mt-3">
-        <Text className="font-bold text-lg mb-1">Заказ:</Text>
-        <View className="bg-gray-200 p-4 rounded-md">
+        <Text className="font-bold text-xl mb-1">Заказ:</Text>
+        <View className="bg-slate-200 p-4 rounded-md">
           {products.map(product => {
             return (
               <View key={product.id}>
                 <View className="flex flex-row justify-between">
-                  <Text>{product.name}</Text>
+                  <Text className="font-bold">{product.name}</Text>
                   <Text>
-                    {product.count} * {product.price - (product.price * product.discount) / 100} ={' '}
-                    {(product.price - (product.price * product.discount) / 100) * product.count} рублей
+                    {product.count} шт. * {product.price - (product.price * product.discount) / 100} ={' '}
+                    {(product.price - (product.price * product.discount) / 100) * product.count} руб.
                   </Text>
                 </View>
-                <View className="border-t-2 border-solid mt-3 mb-3"></View>
+                <View className="border-t-2 border-t-slate-400 border-solid mt-3 mb-3"></View>
               </View>
             )
           })}
@@ -134,8 +142,8 @@ const NewOrders: FC = () => {
 
         {promocode && (
           <View className="mt-2">
-            <Text className="text-right">Цена без скидки: {price} рублей</Text>
-            <Text className="text-right">Цена с промокодом: {resultPrice} рублей</Text>
+            <Text className="text-right text-slate-400">Цена без скидки: {price} рублей</Text>
+            <Text className="text-right text-slate-400">Цена с промокодом: {resultPrice} рублей</Text>
           </View>
         )}
       </View>
@@ -154,7 +162,7 @@ const NewOrders: FC = () => {
               <Text className="text-center mt-2 mb-2 text-orange-500">Загрузка...</Text>
             </View>
           ) : (
-            <Button title="Сделать заказ" color="#F77905" onPress={handleOrders} disabled={errorAdress} />
+            <ButtonCustom title="Сделать заказ" color="orange" onPress={handleOrders} />
           )}
         </View>
         {errorAdress && <Text className="text-center text-red-500">Адрес не введен или введен не корректно.</Text>}

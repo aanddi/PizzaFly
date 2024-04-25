@@ -117,6 +117,7 @@ export const OrderService = {
       newOrder.promocode = req.body.promocode
       newOrder.discont = req.body.discont
       newOrder.status = 'Выполнен'
+      newOrder.address = req.body.address
 
       const savedOrder = await orderRepository.save(newOrder)
 

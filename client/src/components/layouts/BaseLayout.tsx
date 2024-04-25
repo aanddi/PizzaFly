@@ -11,7 +11,9 @@ const BaseLayout: FC<PropsWithChildren> = ({ children }) => {
     queryClient.invalidateQueries({ queryKey: ['products'] })
     queryClient.invalidateQueries({ queryKey: ['categories'] })
     queryClient.invalidateQueries({ queryKey: ['promotions'] })
-    setRefreshing(false)
+    setTimeout(() => {
+      setRefreshing(false)
+    }, 2000)
   }
   return (
     <ScrollView refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />} className="pl-3 pr-3 bg-white">

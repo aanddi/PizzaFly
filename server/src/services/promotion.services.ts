@@ -59,7 +59,7 @@ export const PromotionService = {
          discount: 0
       }
 
-      if (promocode.toUpperCase() == 'НОВЫЙ') {
+      if (promocode.toUpperCase() == 'ПЕРВЫЙ') {
          const userOrders = await orderRepository.find({
             where: {
                user: {

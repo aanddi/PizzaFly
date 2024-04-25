@@ -17,8 +17,6 @@ const CitysList: FC = () => {
   const dispatch = useTypedDispatch()
   const navigation = useNavigation()
 
-  const { city } = useTypedSelector(state => state.city)
-
   const { data: citys, isLoading: isLoadingCitys } = useQuery({
     queryKey: ['citys'],
     queryFn: async () => {
@@ -27,14 +25,8 @@ const CitysList: FC = () => {
     }
   })
 
-  useEffect(() => {
-    queryClient.invalidateQueries({ queryKey: ['products', 1] })
-    queryClient.invalidateQueries({ queryKey: ['stopList', city] })
-  }, [])
-
   const handleChangeCity = (name: string) => {
     dispatch(change(name))
-    queryClient.invalidateQueries({ queryKey: ['products', 1] })
     queryClient.invalidateQueries({ queryKey: ['stopList', name] })
     navigation.goBack()
   }
@@ -52,12 +44,12 @@ const CitysList: FC = () => {
           })}
       </View>
 
-      <View className="mt-5">
+      <View className="mt-3">
         {citys &&
           citys.map(el => {
             return (
               <TouchableOpacity key={el.id} onPress={() => handleChangeCity(el.name)}>
-                <Text className="font-bold text-slate-600 p-2 text-center text-xl">{el.name}</Text>
+                <Text className="font-black text-slate-600 p-5 text-center text-2xl">{el.name}</Text>
               </TouchableOpacity>
             )
           })}

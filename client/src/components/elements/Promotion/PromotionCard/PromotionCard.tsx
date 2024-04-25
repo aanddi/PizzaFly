@@ -18,10 +18,10 @@ const PromotionCard: FC<PropsCard> = ({ promotion }) => {
           }}
         />
       </View>
-      <View className="mt-2 mb-2">
+      <View className="mt-3 mb-3">
         <View className="pr-3 pl-3">
-          <Text className="text-lg font-bold mb-2">{promotion.name}</Text>
-          <Text className="text-slate-500">{promotion.desc}</Text>
+          <Text className="text-xl font-black mb-2">{promotion.name}</Text>
+          <Text className="text-slate-400">{promotion.desc}</Text>
           {promotion.promocode && <Text className="text-slate-600 font-bold mt-3">Промокод: {promotion.promocode}</Text>}
         </View>
       </View>

@@ -1,8 +1,8 @@
 import { Feather, MaterialIcons } from '@expo/vector-icons'
-import { useQueryClient } from '@tanstack/react-query'
 import React, { useState } from 'react'
 import { Alert, Button, Text, View } from 'react-native'
 
+import ButtonCustom from '@/components/ui/Button/ButtonCustom'
 import Field from '@/components/ui/Field/Field'
 
 import { UsersService } from '@/services/users.services'
@@ -20,7 +20,6 @@ const Auth = () => {
   */
 
   const dispatch = useTypedDispatch()
-  const queryClient = useQueryClient()
 
   const [phoneField, setPhoneField] = useState<string>('')
   const [codeField, setCodeField] = useState<string>('')
@@ -51,7 +50,7 @@ const Auth = () => {
 
   return (
     <View className="mt-10">
-      <Text className="text-center font-bold text-xl">Введите номер</Text>
+      <Text className="text-center font-black text-xl">Введите номер</Text>
 
       <Field
         icon={<Feather name="phone-call" size={18} color="gray" />}
@@ -72,7 +71,7 @@ const Auth = () => {
       />
 
       <View className="mt-20 mb-3">
-        <Button title="Получить код" color="#3C3C3C" onPress={handlePassport} />
+        <ButtonCustom title="Получить код" color="stone" onPress={handlePassport} />
       </View>
 
       {isLoading ? (
@@ -81,7 +80,7 @@ const Auth = () => {
         </View>
       ) : (
         <View className="mt-2 mb-3">
-          <Button title="Войти" color="#F77905" onPress={handleAuth} />
+          <ButtonCustom title="Войти" color="orange" onPress={handleAuth} />
         </View>
       )}
 

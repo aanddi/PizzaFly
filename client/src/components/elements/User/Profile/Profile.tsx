@@ -4,9 +4,10 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { useMutation } from '@tanstack/react-query'
 import LottieView from 'lottie-react-native'
 import React, { FC, useState } from 'react'
-import { Button, Text, TouchableOpacity, View } from 'react-native'
+import { Text, TouchableOpacity, View } from 'react-native'
 
 import BaseLayout from '@/components/layouts/BaseLayout'
+import ButtonCustom from '@/components/ui/Button/ButtonCustom'
 import Field from '@/components/ui/Field/Field'
 
 import { UsersService } from '@/services/users.services'
@@ -66,7 +67,7 @@ const Profile: FC = () => {
       </View>
 
       <View className="mt-5">
-        <Button title="История заказов" color={'#F77905'} onPress={() => navigation.navigate('История заказов')} />
+        <ButtonCustom title="Мои заказы" color="orange" onPress={() => navigation.navigate('Мои заказы')} />
       </View>
 
       <View>
@@ -103,10 +104,10 @@ const Profile: FC = () => {
       <View className="mt-10 mb-10">
         {isLoading ? (
           <View>
-            <Text className="text-center mt-2 mb-2 text-blue-500 font-bold">Загрузка...</Text>
+            <Text className="text-center mt-2 mb-2 text-green-500 font-bold">Загрузка...</Text>
           </View>
         ) : (
-          <Button title="Сохранить" onPress={() => mutationUser.mutate(user?.id)} />
+          <ButtonCustom title="Сохранить" color="green" onPress={() => mutationUser.mutate(user?.id)} />
         )}
 
         <TouchableOpacity onPress={() => dispatch(logout())}>

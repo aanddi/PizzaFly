@@ -16,7 +16,7 @@ const ErrorMessage: FC<Props> = ({ message }) => {
         </View>
       </View>
       <View>
-        <Text className="text-center  font-bold text-slate-500">{message}</Text>
+        <Text className="text-center font-bold text-slate-500 text-lg">{message}</Text>
       </View>
     </View>
   )

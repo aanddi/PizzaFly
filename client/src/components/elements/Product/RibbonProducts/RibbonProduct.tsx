@@ -46,13 +46,6 @@ const RibbonProduct: FC = () => {
     }
   })
 
-  useEffect(() => {
-    queryClient.refetchQueries({ queryKey: ['products', categorieId] })
-    queryClient.refetchQueries({ queryKey: ['categories'] })
-    queryClient.refetchQueries({ queryKey: ['promotions'] })
-    queryClient.refetchQueries({ queryKey: ['stopList', city] })
-  }, [])
-
   return (
     <ScrollView>
       {isLoadingCategories && (
@@ -88,7 +81,7 @@ const RibbonProduct: FC = () => {
         <View className="mt-5">
           {Array.from({ length: 5 }).map((el, index) => {
             return (
-              <View key={index} className="p-1">
+              <View key={index} className="mt-3">
                 <Skeleton h="150" flex="15" rounded="md" />
               </View>
             )

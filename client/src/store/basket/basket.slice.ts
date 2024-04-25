@@ -40,6 +40,7 @@ const basketSlice = createSlice({
       state.length = state.products.reduce((acc, elem) => elem.count + acc, 0)
       // price считается с учетом скидки на позицию и количество
       state.price = state.products.reduce((acc, elem) => (elem.price - (elem.price * elem.discount) / 100) * elem.count + acc, 0)
+      state.price = Math.round(state.price)
     },
 
     deleteFromBasket(state, action) {
@@ -53,6 +54,7 @@ const basketSlice = createSlice({
       state.length = state.products.reduce((acc, elem) => elem.count + acc, 0)
       // price считается с учетом скидки на позицию и количество
       state.price = state.products.reduce((acc, elem) => (elem.price - (elem.price * elem.discount) / 100) * elem.count + acc, 0)
+      state.price = Math.round(state.price)
     },
 
     resetDiscont(state) {

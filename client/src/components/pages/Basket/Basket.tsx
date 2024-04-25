@@ -2,11 +2,12 @@ import { MaterialIcons } from '@expo/vector-icons'
 import { ParamListBase, useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import React, { FC, useState } from 'react'
-import { Button, Text, View } from 'react-native'
+import { Text, View } from 'react-native'
 
 import ProductCard from '@/components/elements/Product/ProductCard/ProductCard'
 import ErrorMessage from '@/components/elements/app/ErrorMessage/ErrorMessage'
 import BaseLayout from '@/components/layouts/BaseLayout'
+import ButtonCustom from '@/components/ui/Button/ButtonCustom'
 import Field from '@/components/ui/Field/Field'
 
 import { PromotionsService } from '@/services/promotions.services'
@@ -73,11 +74,12 @@ const BasketPage: FC = () => {
             <View className="mt-5">
               {isLoading ? (
                 <Text className="text-center mt-2 mb-2 text-green-500 font-bold">Загрузка...</Text>
+              ) : !isAuth ? (
+                <Text className="text-center text-red-500 mt-5 mb-5">Авторизируйтесь в приложении, чтобы оформить заказ</Text>
               ) : (
-                <Button title="Оформить заказ" color="#22C707" onPress={handleOrder} disabled={!isAuth} />
+                <ButtonCustom title="Оформить заказ" color="green" onPress={handleOrder} />
               )}
             </View>
-            {!isAuth && <Text className="text-center text-red-500 mt-5">Авторизируйтесь в приложении, чтобы оформить заказ</Text>}
           </View>
         </View>
       )}
