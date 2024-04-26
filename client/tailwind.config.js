@@ -11,7 +11,10 @@ module.exports = {
         gray: {
           DEFAULT: themeColors.GRAY
         },
-        whiteCustomized: '#F9F9F9'
+        whiteCustomized: '#F9F9F9',
+        blackCustomized:{
+          500: '#3C3C3C'
+        }
       },
 
       fontFamily: {

@@ -1,15 +1,15 @@
 {
    "_type": "export",
    "__export_format": 4,
-   "__export_date": "2024-04-25T00:33:36.125Z",
+   "__export_date": "2024-04-26T07:45:23.423Z",
    "__export_source": "insomnia.desktop.app:v8.2.0",
    "resources": [
       {
          "_id": "req_83bc68ea89b74814ba0e7fa88e3495da",
          "parentId": "fld_5289ccd809d2404ba4903fba1ad3b666",
-         "modified": 1714005156686,
+         "modified": 1714058163781,
          "created": 1714004713878,
-         "url": "{{LOCAL_URL}}/orders/desc/18",
+         "url": "{{ _.PUBLIC_URL }}/orders/desc/18",
          "name": "/orders/desc/:orderId",
          "description": "",
          "method": "GET",
@@ -75,9 +75,9 @@
       {
          "_id": "req_856ae1929b4743f9b1b64e53eb181fcb",
          "parentId": "fld_5289ccd809d2404ba4903fba1ad3b666",
-         "modified": 1714005104669,
+         "modified": 1714078202099,
          "created": 1714001303399,
-         "url": "{{ _.LOCAL_URL }}/orders/delete-desc/16",
+         "url": "{{ _.LOCAL_URL }}/orders/delete-desc/24",
          "name": "/delete-desc/:id",
          "description": "",
          "method": "DELETE",
@@ -98,9 +98,9 @@
       {
          "_id": "req_e0ee0ea74d7441079e25db7faac00cb6",
          "parentId": "fld_5289ccd809d2404ba4903fba1ad3b666",
-         "modified": 1714005114096,
+         "modified": 1714078233145,
          "created": 1714002435497,
-         "url": "{{ _.LOCAL_URL }}/orders/delete-order/17",
+         "url": "{{ _.LOCAL_URL }}/orders/delete-order/22",
          "name": "/delete-order/:id",
          "description": "",
          "method": "DELETE",
@@ -121,7 +121,7 @@
       {
          "_id": "req_92aa4ef3c1ea418eaa2d16015c55a059",
          "parentId": "fld_5289ccd809d2404ba4903fba1ad3b666",
-         "modified": 1714002293418,
+         "modified": 1714078168376,
          "created": 1713917726177,
          "url": "{{ _.LOCAL_URL }}/orders/all-desc",
          "name": "/orders/all-desc",
@@ -144,7 +144,7 @@
       {
          "_id": "req_5e37ca36cef44b2d846096aa2df273dc",
          "parentId": "fld_5289ccd809d2404ba4903fba1ad3b666",
-         "modified": 1714002282873,
+         "modified": 1714078052682,
          "created": 1713917586224,
          "url": "{{ _.LOCAL_URL }}/orders/all",
          "name": "/orders/all",
@@ -237,9 +237,9 @@
       {
          "_id": "req_ae049208cc444c608fc256274a84368d",
          "parentId": "fld_6b69e7b4461046088ff1bc7e4e1bfb47",
-         "modified": 1714003140109,
+         "modified": 1714111023868,
          "created": 1713702227221,
-         "url": "{{ _.LOCAL_URL }}/users",
+         "url": "{{ _.PUBLIC_URL }}/users",
          "name": "/users",
          "description": "",
          "method": "GET",
@@ -553,9 +553,9 @@
       {
          "_id": "req_7509b39607864c87be13110bb1dc002c",
          "parentId": "fld_944952e57fe0476f97648bae18f12dd1",
-         "modified": 1713894636729,
+         "modified": 1714060285765,
          "created": 1712828133567,
-         "url": "{{ _.LOCAL_URL }}/promotions/",
+         "url": "{{ _.PUBLIC_URL }}/promotions/",
          "name": "/promotions/",
          "description": "",
          "method": "GET",
@@ -605,15 +605,15 @@
       {
          "_id": "req_caa439ddcd814be7822f363e0f511223",
          "parentId": "fld_944952e57fe0476f97648bae18f12dd1",
-         "modified": 1712833311806,
+         "modified": 1714067053016,
          "created": 1712828673445,
-         "url": "{{LOCAL_URL}}/promotions/edit/3",
+         "url": "{{ _.PUBLIC_URL }}/promotions/edit/2",
          "name": "/promotions/edit/:id",
          "description": "",
          "method": "PUT",
          "body": {
             "mimeType": "application/json",
-            "text": "{\n\t\"name\": \"Акция 1\",\n\t\"desc\": \"Описание\",\n\t\"banner\": \"https://eda18.ru/files/news/oM21xtLLbug.jpg\",\n\t\"promocode\": \"promocode\"\n}"
+            "text": "\t{\n\t\t\"name\": \"Выгодно!\",\n\t\t\"desc\": \"Закажите доставку на сумму не меньше 1500 рублей и мы сделаем скидку 10%\",\n\t\t\"banner\": \"https://ovenpizza.ru/wp-content/themes/twentynineteen/img/banner1.png\",\n\t\t\"promocode\": \"КЛАСС\"\n\t}"
          },
          "parameters": [],
          "headers": [
@@ -669,13 +669,13 @@
       {
          "_id": "req_ea35797e883a4b60ac33ac971a0ad2b2",
          "parentId": "fld_1fc1b4da17ac4cda838eb3f18f8fa71f",
-         "modified": 1713913562873,
+         "modified": 1714066936019,
          "created": 1712829035756,
-         "url": "{{LOCAL_URL}}/citys/add",
+         "url": "{{ _.PUBLIC_URL }}/citys/add",
          "name": "/citys/add",
          "description": "",
          "method": "POST",
-         "body": { "mimeType": "application/json", "text": "{\n\t\"name\": \"Алушта\"\n}" },
+         "body": { "mimeType": "application/json", "text": "{\n\t\"name\": \"Севастополь\"\n}" },
          "parameters": [],
          "headers": [
             { "name": "Content-Type", "value": "application/json" },
@@ -695,13 +695,13 @@
       {
          "_id": "req_24cd920ce7e54d2bb49edc255528179b",
          "parentId": "fld_1fc1b4da17ac4cda838eb3f18f8fa71f",
-         "modified": 1712829651394,
+         "modified": 1714067001971,
          "created": 1712829046765,
-         "url": "{{LOCAL_URL}}/citys/edit/1",
+         "url": "{{ _.PUBLIC_URL }}/citys/edit/4",
          "name": "/citys/edit/:id",
          "description": "",
          "method": "PUT",
-         "body": { "mimeType": "application/json", "text": "{\n\t\"name\": \"Симферополь\"\n}" },
+         "body": { "mimeType": "application/json", "text": "{\n\t\"name\": \"Севастополь\"\n}" },
          "parameters": [],
          "headers": [
             { "name": "Content-Type", "value": "application/json" },

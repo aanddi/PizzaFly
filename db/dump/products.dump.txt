@@ -1,0 +1,282 @@
+[
+	{
+		"id": 1,
+		"name": "Том Ям",
+		"size": "30 см.",
+		"price": 640,
+		"image": "https://102922.selcdn.ru/nomenclature_images/87e4e3f2-263a-11ea-80f2-d8d38565926f/2ba55593-7708-4477-a46a-cdd5706f195c.png",
+		"desc": "сыр моцарелла, мидии, креветки, кальмары, помидоры черри, шампиньоны, соус Том Ям",
+		"discount": 10,
+		"tags": "Новинка"
+	},
+	{
+		"id": 2,
+		"name": "Марио",
+		"size": "30 см.",
+		"price": 450,
+		"image": "https://102922.selcdn.ru/nomenclature_images/87e4e3f2-263a-11ea-80f2-d8d38565926f/692a5d65-3a92-4340-8414-be7bbe75a038.png",
+		"desc": "сыр моцарелла, бекон, салат айсберг, томатный соус",
+		"discount": 0,
+		"tags": "Новинка"
+	},
+	{
+		"id": 3,
+		"name": "6 Сыров",
+		"size": "30 см.",
+		"price": 620,
+		"image": "https://102922.selcdn.ru/nomenclature_images/87e4e3f2-263a-11ea-80f2-d8d38565926f/a2a0bfb9-2fc5-4283-9ff6-a17a1e22dbc6.png",
+		"desc": "сыр моцарелла, сыр чеддер, сыр дор блю, сыр пармезан, сыр бельпер «паприка» и «4 перца», сыр рикотта, сливочно-сырный соус",
+		"discount": 0,
+		"tags": ""
+	},
+	{
+		"id": 4,
+		"name": "Маргарита",
+		"size": "30 см.",
+		"price": 320,
+		"image": "https://102922.selcdn.ru/nomenclature_images/87e4e3f2-263a-11ea-80f2-d8d38565926f/1303fc15-7109-4c05-99b1-ca872cb301f9.png",
+		"desc": "моцарелла, помидоры, томатный соус",
+		"discount": 0,
+		"tags": ""
+	},
+	{
+		"id": 5,
+		"name": "Сырная",
+		"size": "30 см.",
+		"price": 350,
+		"image": "https://102922.selcdn.ru/nomenclature_images/87e4e3f2-263a-11ea-80f2-d8d38565926f/5460f824-714e-4077-9baf-d4734e0d55bd.png",
+		"desc": "моцарелла, сливочно-сырный соус",
+		"discount": 0,
+		"tags": ""
+	},
+	{
+		"id": 6,
+		"name": "Пеперони",
+		"size": "30 см.",
+		"price": 420,
+		"image": "https://102922.selcdn.ru/nomenclature_images/87e4e3f2-263a-11ea-80f2-d8d38565926f/9e4a7af3-b61e-4dcc-a051-0bf0344874a8.png",
+		"desc": "моцарелла, пепперони, томатный соус",
+		"discount": 0,
+		"tags": ""
+	},
+	{
+		"id": 7,
+		"name": "Салями",
+		"size": "30 см.",
+		"price": 420,
+		"image": "https://102922.selcdn.ru/nomenclature_images/87e4e3f2-263a-11ea-80f2-d8d38565926f/baac3b7c-f14d-4c45-b7ab-36e2cfc5b055.png",
+		"desc": "моцарелла, салями, помидоры, шампиньоны, томатный соус",
+		"discount": 0,
+		"tags": ""
+	},
+	{
+		"id": 8,
+		"name": "Гавайская",
+		"size": "30 см.",
+		"price": 510,
+		"image": "https://102922.selcdn.ru/nomenclature_images/87e4e3f2-263a-11ea-80f2-d8d38565926f/de705486-63ab-433f-9187-ad86cb091610.png",
+		"desc": "моцарелла, курица, ананасы, томатный соус",
+		"discount": 0,
+		"tags": ""
+	},
+	{
+		"id": 9,
+		"name": "Карбанара",
+		"size": "30 см.",
+		"price": 540,
+		"image": "https://102922.selcdn.ru/nomenclature_images/87e4e3f2-263a-11ea-80f2-d8d38565926f/04a5cf7c-285a-486a-b0df-ed63713e57ce.png",
+		"desc": "моцарелла, балык, яйцо пашот, пармезан, сливочно-сырный соус",
+		"discount": 20,
+		"tags": ""
+	},
+	{
+		"id": 10,
+		"name": "Мясная",
+		"size": "30 см.",
+		"price": 500,
+		"image": "https://102922.selcdn.ru/nomenclature_images/87e4e3f2-263a-11ea-80f2-d8d38565926f/f0b05412-d744-4276-b5cb-4ee2de8954e3.png",
+		"desc": "моцарелла, охотничьи колбаски, салями, балык, курица, помидоры, шампиньоны, томатный соус",
+		"discount": 20,
+		"tags": ""
+	},
+  	{
+		"id": 11,
+		"name": "Любимая Кола",
+		"size": "0.33 л.",
+		"price": 100,
+		"image": "https://102922.selcdn.ru/nomenclature_images/87e4e3f2-263a-11ea-80f2-d8d38565926f/701e40e5-97ce-42d1-a740-0f0a5e32160d.png",
+		"desc": "Освежающий газированный напиток",
+		"discount": 20,
+		"tags": ""
+	},
+	{
+		"id": 12,
+		"name": "Любимая Кола",
+		"size": "0.5 л.",
+		"price": 120,
+		"image": "https://102922.selcdn.ru/nomenclature_images/87e4e3f2-263a-11ea-80f2-d8d38565926f/f30bc117-606d-48b0-a710-8ac02ed0c09b.png",
+		"desc": "Освежающий газированный написток",
+		"discount": 0,
+		"tags": ""
+	},
+	{
+		"id": 13,
+		"name": "Любимая Кола",
+		"size": "1 л.",
+		"price": 150,
+		"image": "https://102922.selcdn.ru/nomenclature_images/87e4e3f2-263a-11ea-80f2-d8d38565926f/4810c855-afa6-4e47-9e08-7afba7a9b0ed.png",
+		"desc": "Освежающий газированный написток",
+		"discount": 0,
+		"tags": ""
+	},
+	{
+		"id": 14,
+		"name": "Фрустайл Апельсин",
+		"size": "0.33 л.",
+		"price": 100,
+		"image": "https://102922.selcdn.ru/nomenclature_images/87e4e3f2-263a-11ea-80f2-d8d38565926f/77b6d325-c34a-4fbb-b237-6631c8a9f24f.png",
+		"desc": "Освежающий газированный написток",
+		"discount": 0,
+		"tags": ""
+	},
+	{
+		"id": 15,
+		"name": "Фрустайл Апельсин",
+		"size": "0.5 л.",
+		"price": 120,
+		"image": "https://102922.selcdn.ru/nomenclature_images/87e4e3f2-263a-11ea-80f2-d8d38565926f/f4c6bac9-7056-4815-987c-fd642aa9d82c.png",
+		"desc": "Освежающий газированный написток",
+		"discount": 0,
+		"tags": ""
+	},
+	{
+		"id": 16,
+		"name": "Фрустайл Апельсин",
+		"size": "1 л.",
+		"price": 150,
+		"image": "https://102922.selcdn.ru/nomenclature_images/87e4e3f2-263a-11ea-80f2-d8d38565926f/e8e534d2-a3c7-446b-918a-c5f6a1ec71a0.png",
+		"desc": "Освежающий газированный написток",
+		"discount": 0,
+		"tags": ""
+	},
+	{
+		"id": 17,
+		"name": "Вода без газа",
+		"size": "0.5 л.",
+		"price": 80,
+		"image": "https://102922.selcdn.ru/nomenclature_images/87e4e3f2-263a-11ea-80f2-d8d38565926f/42e48af9-8163-416e-b587-f6cbdbc0707b.png",
+		"desc": "Освежающий напиток",
+		"discount": 0,
+		"tags": ""
+	},
+	{
+		"id": 18,
+		"name": "Вода без газа",
+		"size": "1 л.",
+		"price": 120,
+		"image": "https://102922.selcdn.ru/nomenclature_images/87e4e3f2-263a-11ea-80f2-d8d38565926f/037416bd-6a9d-46bb-afdf-cad65346ac69.png",
+		"desc": "Освежающий напиток",
+		"discount": 0,
+		"tags": ""
+	},
+	{
+		"id": 19,
+		"name": "Вода газ",
+		"size": "0.5 л.",
+		"price": 80,
+		"image": "https://102922.selcdn.ru/nomenclature_images/87e4e3f2-263a-11ea-80f2-d8d38565926f/654ad30c-0f78-47e8-a9a7-035fe6e18caa.png",
+		"desc": "Освежающий газированный напиток",
+		"discount": 0,
+		"tags": ""
+	},
+	{
+		"id": 20,
+		"name": "Вода газ",
+		"size": "1 л.",
+		"price": 120,
+		"image": "https://102922.selcdn.ru/nomenclature_images/87e4e3f2-263a-11ea-80f2-d8d38565926f/706669ab-1325-42c8-b8c2-902016714dd8.png",
+		"desc": "Освежающий газированный напиток",
+		"discount": 0,
+		"tags": ""
+	},
+	{
+		"id": 21,
+		"name": "Фреш Апельсин",
+		"size": "500 мл.",
+		"price": 400,
+		"image": "https://102922.selcdn.ru/nomenclature_images/87e4e3f2-263a-11ea-80f2-d8d38565926f/f001d397-2ea6-4cc8-828f-321df41ff98d.png",
+		"desc": "Свежо выжатый сок из натурального апельсина",
+		"discount": 0,
+		"tags": ""
+	},
+  {
+		"id": 23,
+		"name": "Соус Кисло-сладкий",
+		"size": "25 г.",
+		"price": 50,
+		"image": "https://family-food.club/storage/files/campaign/1/dish/%D0%95%D0%B2%D1%80%D0%BE%D0%BF%D0%B5%D0%B8%CC%86%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BA%D1%83%D1%85%D0%BD%D1%8F/%D0%A1%D0%BE%D1%83%D1%81%D1%8B/%D0%A1%D0%BE%D1%83%D1%81-%E2%80%9C%D0%9A%D0%B8%D1%81%D0%BB%D0%BE-%D1%81%D0%BB%D0%B0%D0%B4%D0%BA%D0%B8%D0%B9%E2%80%9D-%D0%BF%D1%80%D0%B8%D0%BB.png?time=1624967652",
+		"desc": "Соус Astoria",
+		"discount": 0,
+		"tags": ""
+	},
+	{
+		"id": 22,
+		"name": "Сырный соус",
+		"size": "25 г.",
+		"price": 50,
+		"image": "https://img.back-family-food.ru/images/NjA3OTQ5NTgzOTUwNjczODNYsA/59VvEivEdKw0qMJ5pVvu4oRA/yyTLACYIXdw+b0LYfDj6s3rlqp4uvMSV9FuCHP79mBWjtKZKFotILu3m16yoTExDQQL6tC5HbOSDCFFEtPZb6zZNQndkZ/SebD5KzZK2+lb78ll4IK7bR1z2KEA8q7HABaoTUVDHVxEEfjz4g0zH3sD04ZfC30AlM7uA/YAFcLs2jW7Ro5gkEZHvWue2zgzeh1fSLoLoN8rmUlFKFHXa7TV4+EZWJj6NezYGJzpEdIa7vjBvQqWHa+jop7SjhJrAnZ6GckciWfBeS7DAjcJryDJ7NNA9Q13UYT5l3t91tq9LL2NH5O65ngE0cXK2YHeIjyHwJsv9Vcn1oNF3FKi5lxkHUNPZT7mYNDSnhG1NIqEFk07aUABEsP+POUNkIwEQcYkrQWyJZlfZxRp38vZshooHEgdFkcyCcVkPyXK+lp9VCErnx+qcKXA=",
+		"desc": "Соус Astoria",
+		"discount": 0,
+		"tags": ""
+	},
+	{
+		"id": 24,
+		"name": "Соус Кетчуп",
+		"size": "25 г.",
+		"price": 50,
+		"image": "https://family-food.club/storage/files/campaign/1/dish/%D0%95%D0%B2%D1%80%D0%BE%D0%BF%D0%B5%D0%B8%CC%86%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BA%D1%83%D1%85%D0%BD%D1%8F/%D0%A1%D0%BE%D1%83%D1%81%D1%8B/%D0%A1%D0%BE%D1%83%D1%81-%C2%AB%D0%9A%D0%B5%D1%82%D1%87%D1%83%D0%BF%C2%BB-%D0%BF%D1%80%D0%B8%D0%BB.png?time=1624967652",
+		"desc": "Соус Astoria",
+		"discount": 0,
+		"tags": ""
+	},
+	{
+		"id": 25,
+		"name": "Соус Горчичный",
+		"size": "25 г.",
+		"price": 50,
+		"image": "https://family-food.club/storage/files/campaign/1/dish/%D0%95%D0%B2%D1%80%D0%BE%D0%BF%D0%B5%D0%B8%CC%86%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BA%D1%83%D1%85%D0%BD%D1%8F/%D0%A1%D0%BE%D1%83%D1%81%D1%8B/%D0%A1%D0%BE%D1%83%D1%81-%C2%AB%D0%93%D0%BE%D1%80%D1%87%D0%B8%D1%87%D0%BD%D1%8B%D0%B9%C2%BB-%D0%BF%D1%80%D0%B8%D0%BB.png?time=1646814124",
+		"desc": "Соус Astoria",
+		"discount": 0,
+		"tags": ""
+	},
+	{
+		"id": 27,
+		"name": "Соус Чесночный",
+		"size": "25 г.",
+		"price": 50,
+		"image": "https://family-food.club/storage/files/campaign/1/dish/%D0%95%D0%B2%D1%80%D0%BE%D0%BF%D0%B5%D0%B8%CC%86%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BA%D1%83%D1%85%D0%BD%D1%8F/%D0%A1%D0%BE%D1%83%D1%81%D1%8B/%D0%A1%D0%BE%D1%83%D1%81-%C2%AB%D0%A7%D0%B5%D1%81%D0%BD%D0%BE%D1%87%D0%BD%D1%8B%D0%B9%C2%BB-%D0%BF%D1%80%D0%B8%D0%BB.png?time=1646814124",
+		"desc": "Соус Astoria",
+		"discount": 0,
+		"tags": ""
+	},
+	{
+		"id": 26,
+		"name": "Соус Барбекю",
+		"size": "25 г.",
+		"price": 50,
+		"image": "https://family-food.club/storage/files/campaign/1/dish/%D0%95%D0%B2%D1%80%D0%BE%D0%BF%D0%B5%D0%B8%CC%86%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BA%D1%83%D1%85%D0%BD%D1%8F/%D0%A1%D0%BE%D1%83%D1%81%D1%8B/%D0%A1%D0%BE%D1%83%D1%81_%C2%AB%D0%91%D0%B0%D1%80%D0%B1%D0%B5%D0%BA%D1%8C%D1%8E_%D0%9A%D0%BB%D0%B0%D1%81%D1%81%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9%C2%BB_%D0%BF%D1%80%D0%B8%D0%BB.png?time=1624967652",
+		"desc": "Соус Astoria",
+		"discount": 0,
+		"tags": ""
+	},
+  	{
+		"id": 30,
+		"name": "Сытное трио",
+		"size": "3 пиццы",
+		"price": 1200,
+		"image": "https://i.yapx.ru/XUerZ.png",
+		"desc": "Пиццы Том Ям, Марио, Маргарита",
+		"discount": 0,
+		"tags": ""
+	}
+]

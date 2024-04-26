@@ -2,7 +2,7 @@
   "expo": {
     "entryPoint": "./src/app/index",
     "name": "ПиццаФлай",
-    "slug": "ПиццаФлай",
+    "slug": "pizzafly",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./src/assets/icon1.png",

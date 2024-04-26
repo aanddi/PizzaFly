@@ -1,0 +1,23 @@
+[
+	{
+		"id": 3,
+		"name": "Мега вкусно",
+		"desc": "Закажите доставку на сумму не меньше 2500 рублей и мы сделаем скидку 20%",
+		"banner": "https://eda18.ru/files/news/oM21xtLLbug.jpg",
+		"promocode": "СУПЕР"
+	},
+	{
+		"id": 2,
+		"name": "Выгодно!",
+		"desc": "Закажите доставку на сумму не меньше 1500 рублей и мы сделаем скидку 10%",
+		"banner": "https://ovenpizza.ru/wp-content/themes/twentynineteen/img/banner1.png",
+		"promocode": "КЛАСС"
+	},
+	{
+		"id": 1,
+		"name": "Первый заказ",
+		"desc": "При первом заказе с Вашего номера телефона мы предоставляем Вам 15% скидки на чек!",
+		"banner": "https://simferopol.lolapizza.ru/upload/slider/Lolo-Qalitty-Slider-1920x560.jpg",
+		"promocode": "ПЕРВЫЙ"
+	}
+]

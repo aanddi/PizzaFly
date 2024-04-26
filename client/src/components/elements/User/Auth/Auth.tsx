@@ -1,6 +1,6 @@
 import { Feather, MaterialIcons } from '@expo/vector-icons'
 import React, { useState } from 'react'
-import { Alert, Button, Text, View } from 'react-native'
+import { Alert, Text, View } from 'react-native'
 
 import ButtonCustom from '@/components/ui/Button/ButtonCustom'
 import Field from '@/components/ui/Field/Field'
@@ -71,7 +71,7 @@ const Auth = () => {
       />
 
       <View className="mt-20 mb-3">
-        <ButtonCustom title="Получить код" color="stone" onPress={handlePassport} />
+        <ButtonCustom title="Получить код" color="blackCustomized" onPress={handlePassport} />
       </View>
 
       {isLoading ? (
