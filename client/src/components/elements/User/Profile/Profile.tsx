@@ -67,7 +67,7 @@ const Profile: FC = () => {
       </View>
 
       <View className="mt-5">
-        <ButtonCustom title="Мои заказы" color="orange" onPress={() => navigation.navigate('Мои заказы')} />
+        <ButtonCustom title="Мои заказы" color="bg-orange-500" onPress={() => navigation.navigate('Мои заказы')} />
       </View>
 
       <View>
@@ -107,7 +107,7 @@ const Profile: FC = () => {
             <Text className="text-center mt-2 mb-2 text-green-500 font-bold">Загрузка...</Text>
           </View>
         ) : (
-          <ButtonCustom title="Сохранить" color="green" onPress={() => mutationUser.mutate(user?.id)} />
+          <ButtonCustom title="Сохранить" color="bg-green-500" onPress={() => mutationUser.mutate(user?.id)} />
         )}
 
         <TouchableOpacity onPress={() => dispatch(logout())}>

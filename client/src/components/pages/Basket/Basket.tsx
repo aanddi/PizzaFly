@@ -49,7 +49,7 @@ const BasketPage: FC = () => {
     <BaseLayout>
       {length === 0 && (
         <View className="flex items-center mt-10">
-          <ErrorMessage message="Ой... Корзина пуста :(" />
+          <ErrorMessage message="Ваша корзина пуста" />
         </View>
       )}
 
@@ -77,7 +77,7 @@ const BasketPage: FC = () => {
               ) : !isAuth ? (
                 <Text className="text-center text-red-500 mt-5 mb-5">Авторизируйтесь в приложении, чтобы оформить заказ</Text>
               ) : (
-                <ButtonCustom title="Оформить заказ" color="green" onPress={handleOrder} />
+                <ButtonCustom title="Оформить заказ" color="bg-green-500" onPress={handleOrder} />
               )}
             </View>
           </View>

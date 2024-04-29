@@ -37,14 +37,14 @@ const Auth = () => {
   }
 
   const handleAuth = async () => {
-    if (code === +codeField) {
+    if (!codeField) setErrorValidCode(true)
+
+    if (code == +codeField) {
       setIsLoading(true)
       const response = await UsersService.getUserByPhone(phoneField)
       dispatch(auth(response.data))
       setIsLoading(false)
       return response.data
-    } else {
-      setErrorValidCode(true)
     }
   }
 
@@ -71,7 +71,7 @@ const Auth = () => {
       />
 
       <View className="mt-20 mb-3">
-        <ButtonCustom title="Получить код" color="blackCustomized" onPress={handlePassport} />
+        <ButtonCustom title="Получить код" color="bg-neutral-700" onPress={handlePassport} />
       </View>
 
       {isLoading ? (
@@ -80,7 +80,7 @@ const Auth = () => {
         </View>
       ) : (
         <View className="mt-2 mb-3">
-          <ButtonCustom title="Войти" color="orange" onPress={handleAuth} />
+          <ButtonCustom title="Войти" color="bg-orange-500" onPress={handleAuth} />
         </View>
       )}
 

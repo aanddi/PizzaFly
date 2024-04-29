@@ -7,10 +7,10 @@ interface ButtonProps {
   onPress: () => void
 }
 
-const ButtonCustom: FC<ButtonProps> = ({ title, color, onPress, ...rest }) => {
+const ButtonCustom: FC<ButtonProps> = ({ title, color, onPress }) => {
   return (
-    <TouchableOpacity onPress={onPress} {...rest}>
-      <Text className={`bg-${color}-500  p-1 rounded-lg font-bold text-white text-center text-lg`}>{title}</Text>
+    <TouchableOpacity onPress={onPress}>
+      <Text className={`${color} p-1 rounded-lg font-bold text-white text-center text-lg`}>{title}</Text>
     </TouchableOpacity>
   )
 }

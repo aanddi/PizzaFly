@@ -162,7 +162,7 @@ const NewOrders: FC = () => {
               <Text className="text-center mt-2 mb-2 text-orange-500">Загрузка...</Text>
             </View>
           ) : (
-            <ButtonCustom title="Сделать заказ" color="orange" onPress={handleOrders} />
+            <ButtonCustom title="Сделать заказ" color="bg-orange-500" onPress={handleOrders} />
           )}
         </View>
         {errorAdress && <Text className="text-center text-red-500">Адрес не введен или введен не корректно.</Text>}

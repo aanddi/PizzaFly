@@ -1,7 +1,7 @@
 import { useRoute } from '@react-navigation/native'
-import { useQuery } from '@tanstack/react-query'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { Skeleton } from 'native-base'
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 import { Text, View } from 'react-native'
 
 import ErrorMessage from '@/components/elements/app/ErrorMessage/ErrorMessage'
@@ -29,7 +29,7 @@ const DescOrder: FC = () => {
     <BaseLayout>
       {descs && (
         <>
-          <Text className="font-bold text-xl mt-4">Состав заказа: </Text>
+          <Text className="font-bold text-xl mt-4">Состав заказа №{orderId}: </Text>
           <View className="bg-slate-200 p-4 rounded-md mt-5">
             {descs.map(desc => {
               return (
@@ -57,7 +57,7 @@ const DescOrder: FC = () => {
         </View>
       )}
 
-      <View>{!descs && !isLoading && <ErrorMessage message="Упс... Произошла ошибка." />}</View>
+      <View>{!descs && !isLoading && <ErrorMessage message="Произошла ошибка" />}</View>
     </BaseLayout>
   )
 }

@@ -1,6 +1,6 @@
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { Skeleton } from 'native-base'
-import { FC, useEffect, useState } from 'react'
+import { FC, useState } from 'react'
 import { ScrollView, Text, TouchableOpacity, View } from 'react-native'
 
 import ProductCard from '@/components/elements/Product/ProductCard/ProductCard'
@@ -74,7 +74,7 @@ const RibbonProduct: FC = () => {
       )}
 
       {!categoriesData && !isLoadingCategories && (
-        <ErrorMessage message="Упс... Категории не найдены. Попробуйте перезагрузить страницу." />
+        <ErrorMessage message="Категории не найдены. Попробуйте перезагрузить страницу." />
       )}
 
       {isLoadingProducts && (
@@ -97,9 +97,7 @@ const RibbonProduct: FC = () => {
       </View>
 
       <View>
-        {!products && !isLoadingProducts && (
-          <ErrorMessage message="Упс... Продукты не найдены. Попробуйте перезагрузить страницу." />
-        )}
+        {!products && !isLoadingProducts && <ErrorMessage message="Продукты не найдены. Попробуйте перезагрузить страницу." />}
       </View>
     </ScrollView>
   )
